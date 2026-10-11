@@ -132,7 +132,7 @@ static void emit_shot() {
     fflush(stdout); puts("\nEND_FRAME");
 }
 static void send_status() {
-    printf("{\"version\":\"native-0.3\",\"mode\":\"%s\",\"game\":%d,\"frames\":%lu,\"returns\":%lu,\"keys\":%lu,\"seen_physical\":%lu,\"uptime_ms\":%lu,\"count\":%d,\"selected\":%d,\"rotated\":%d}\n",
+    printf("{\"version\":\"native-0.4\",\"mode\":\"%s\",\"game\":%d,\"frames\":%lu,\"returns\":%lu,\"keys\":%lu,\"seen_physical\":%lu,\"uptime_ms\":%lu,\"count\":%d,\"selected\":%d,\"rotated\":%d}\n",
         active==-1?"menu":active==-2?"diagnostic":"game",active,
         (unsigned long)frames,(unsigned long)menu_returns,(unsigned long)read_keys(),(unsigned long)seen,(unsigned long)now_ms(),GAME_COUNT,selected,rotated);
 }

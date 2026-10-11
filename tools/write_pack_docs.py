@@ -5,6 +5,10 @@ root=Path(__file__).resolve().parents[1]
 g=json.loads((root/'tools/native_catalog.json').read_text());m=json.loads((root/'dist/build-manifest.json').read_text())
 counts=collections.Counter(x['group'] for x in g)
 verification=[]
+for collection in ('tiny','gamebuino'):
+ p=root/'logs'/(collection+'-host')/'report.json';r=json.loads(p.read_text()) if p.exists() else {}
+ same=r.get('result')=='passed' and all(m['source_sha256'].get(k)==v for k,v in r.get('source_sha256',{}).items())
+ verification.append(f"Passed desktop input/rendering checks for {len(r['checks'])} {collection} additions (3,600 logical frames per game)." if same else f'{collection} desktop checks pending for these sources.')
 for name,label in [('final-smoke','launch/return'),('final-play','selected gameplay/orientation')]:
  p=root/'logs'/name/'report.json';r=json.loads(p.read_text()) if p.exists() else {}
  verification.append(f"Passed {len(r['checks'])} {label} checks." if r.get('result')=='passed' and r.get('uf2_sha256')==m['uf2_sha256'] else f'Current-image {label} checks are pending.')
@@ -18,11 +22,11 @@ for i,x in enumerate(g,1):
  lines.append(f"| {i} | {x['title']} | {x['group']} | {c} |")
 lines+=['','**Y returns to the menu in every game.** Two-player games share the device in turns. Full playthroughs have not been performed.','']
 (root/'docs/INSTALLED_GAMES.md').write_text('\n'.join(lines))
-(root/'docs/NATIVE_PACK.md').write_text(f'''# Curated native pack 0.3
+(root/'docs/NATIVE_PACK.md').write_text(f'''# Curated native pack 0.4
 
 **{len(g)} native games** for Pico 2 and Waveshare Pico-LCD-1.3, with no ROMs, microSD or speaker required.
 
-Includes {counts['TINYGAME']} TinyJoypad games, {counts['GAME']} selected PicoPad games, {counts['CRISP']} Crisp games, {counts['POCKET']} Pocket Gamer games and {counts['ORIGINAL']} original PicoConsole games. See [all games and controls](INSTALLED_GAMES.md).
+Includes {counts['TINYGAME']} TinyJoypad games, {counts['GAME']} selected PicoPad games, {counts['CRISP']} Crisp games, {counts['POCKET']} Pocket Gamer games {counts['ORIGINAL']} original PicoConsole games, {counts['TINYEXTRA']} additional TinyJoypad games and {counts['GAMEBUINO']} Gamebuino games. See [all games and controls](INSTALLED_GAMES.md).
 
 ## Controls and visibility
 
@@ -31,11 +35,12 @@ Includes {counts['TINYGAME']} TinyJoypad games, {counts['GAME']} selected PicoPa
 - Arkanoid: A/B launches; left/right moves the bottom paddle. Pinball: left/right operates bottom flippers; A/B launches.
 - The menu has one compact header, seven rows, 16-pixel white names, bright selection and white/yellow hints.
 - Crisp and original games use the whole square screen. Connect Four, Tic Tac Toe, Math and Tetramino have adapted full-screen layouts. 2048 has larger numbers. Some lettering baked into original game art remains small.
+- TinyJoypad Tetromino and Gamebuino Tetrino are rotated with matching controls for upright play. Number Place has an enlarged board and digits. New monochrome games use white pixels and high-contrast shading.
 - The extra DISPLAY / BUTTONS diagnostic is not counted as a game.
 
 ## Capacity
 
-Flash: **{m['binary_flash_bytes']:,} / 4,194,304 bytes ({m['binary_flash_bytes']/4194304*100:.2f}%)**, leaving **{4194304-m['binary_flash_bytes']:,} bytes**. UF2 container size is larger than the flash image. This curated pack leaves space for further reviewed additions; excluded material is not restored to fill bytes.
+Flash: **{m['binary_flash_bytes']:,} / 4,194,304 bytes ({m['binary_flash_bytes']/4194304*100:.2f}%)**, leaving **{4194304-m['binary_flash_bytes']:,} bytes**. UF2 container size is larger than the flash image. Only additions with reviewed compatible terms and working desktop checks are included.
 
 Static RAM: {m['ram']['static_ram_bytes']:,} bytes; shared game area: {m['ram']['shared_game_ram_bytes']:,} bytes; stack: {m['ram']['stack_reserved_bytes']:,} bytes; heap capacity before allocation: {m['ram']['heap_capacity_bytes']:,} bytes. Only one game runs at a time. Linker/ELF checks verify that overlapping game sections do not overlap core state.
 
@@ -82,7 +87,7 @@ To load manually, hold BOOTSEL while connecting the Pico 2, verify `INFO_UF2.TXT
 
 ## Sources and licences
 
-The combined firmware and PicoConsole additions are GPLv3. Original MIT, BSD, Unlicense and GPL notices remain in force for their components. Dependencies are Git submodules pinned in `.gitmodules` and `dependencies.lock.json`; they are not edited by the port scripts.
+The combined firmware and PicoConsole additions are GPLv3. Original MIT, BSD, Unlicense, LGPL and GPL notices remain in force for their components. Dependencies are Git submodules pinned in `.gitmodules` and `dependencies.lock.json`; they are not edited by the port scripts.
 
 The public build excludes imported Sokoban level sets, all Fifteen2 picture puzzles and four recreations with unclear asset provenance. Source notices and asset references were reviewed; this does not independently establish every upstream author's ownership or clear game-name trademarks. See the recorded review.
 

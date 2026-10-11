@@ -27,7 +27,7 @@ sources={str(p.relative_to(ROOT)).replace('\\','/'):sha(p)
          for p in sorted((ROOT/'firmware').rglob('*')) if p.is_file()}
 report={
     'recorded_utc':datetime.now(timezone.utc).isoformat(),
-    'firmware':'native-0.3','board':'pico2','platform':'rp2350-arm-s',
+    'firmware':'native-0.4','board':'pico2','platform':'rp2350-arm-s',
     'system_clock_hz':150000000,'flash_limit_bytes':4194304,
     'binary_flash_bytes':binary.stat().st_size,'uf2_blocks':count,
     'binary_sha256':sha(binary),'uf2_sha256':sha(uf2),

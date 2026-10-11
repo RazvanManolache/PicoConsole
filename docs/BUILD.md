@@ -38,7 +38,7 @@ Hold BOOTSEL while plugging in the board. Verify `INFO_UF2.TXT` identifies **RP2
 python tools/package_release.py --build-dir build --ninja /path/to/ninja
 ```
 
-Upload the resulting UF2, source ZIP, notices ZIP and release manifest from `dist/release/` together. The source ZIP contains prepared, human-readable modified game sources, build scripts, licence texts, dependency revision records and the SDK/TinyUSB source/header/configuration files required for this build. It omits unrelated upstream games, all imported Sokoban levels, picture puzzles, ROMs, unused vendor ports and compiler binaries.
+Upload the resulting UF2, source ZIP, notices ZIP and release manifest from `dist/releases/0.4/` together. The source ZIP contains prepared, human-readable modified game sources, build scripts, licence texts, dependency revision records and the SDK/TinyUSB source/header/configuration files required for this build. It omits unrelated upstream games, all imported Sokoban levels, picture puzzles, ROMs, unused vendor ports and compiler binaries.
 
 Extract the source ZIP and run:
 

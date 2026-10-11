@@ -1,8 +1,8 @@
-# Curated native pack 0.3
+# Curated native pack 0.4
 
-**318 native games** for Pico 2 and Waveshare Pico-LCD-1.3, with no ROMs, microSD or speaker required.
+**366 native games** for Pico 2 and Waveshare Pico-LCD-1.3, with no ROMs, microSD or speaker required.
 
-Includes 20 TinyJoypad games, 16 selected PicoPad games, 266 Crisp games, 12 Pocket Gamer games and 4 original PicoConsole games. See [all games and controls](INSTALLED_GAMES.md).
+Includes 20 TinyJoypad games, 16 selected PicoPad games, 266 Crisp games, 12 Pocket Gamer games 4 original PicoConsole games, 21 additional TinyJoypad games and 27 Gamebuino games. See [all games and controls](INSTALLED_GAMES.md).
 
 ## Controls and visibility
 
@@ -11,13 +11,14 @@ Includes 20 TinyJoypad games, 16 selected PicoPad games, 266 Crisp games, 12 Poc
 - Arkanoid: A/B launches; left/right moves the bottom paddle. Pinball: left/right operates bottom flippers; A/B launches.
 - The menu has one compact header, seven rows, 16-pixel white names, bright selection and white/yellow hints.
 - Crisp and original games use the whole square screen. Connect Four, Tic Tac Toe, Math and Tetramino have adapted full-screen layouts. 2048 has larger numbers. Some lettering baked into original game art remains small.
+- TinyJoypad Tetromino and Gamebuino Tetrino are rotated with matching controls for upright play. Number Place has an enlarged board and digits. New monochrome games use white pixels and high-contrast shading.
 - The extra DISPLAY / BUTTONS diagnostic is not counted as a game.
 
 ## Capacity
 
-Flash: **3,351,968 / 4,194,304 bytes (79.92%)**, leaving **842,336 bytes**. UF2 container size is larger than the flash image. This curated pack leaves space for further reviewed additions; excluded material is not restored to fill bytes.
+Flash: **4,076,288 / 4,194,304 bytes (97.19%)**, leaving **118,016 bytes**. UF2 container size is larger than the flash image. Only additions with reviewed compatible terms and working desktop checks are included.
 
-Static RAM: 472,288 bytes; shared game area: 139,312 bytes; stack: 32,768 bytes; heap capacity before allocation: 19,232 bytes. Only one game runs at a time. Linker/ELF checks verify that overlapping game sections do not overlap core state.
+Static RAM: 477,364 bytes; shared game area: 139,312 bytes; stack: 32,768 bytes; heap capacity before allocation: 14,156 bytes. Only one game runs at a time. Linker/ELF checks verify that overlapping game sections do not overlap core state.
 
 ## Changes and limitations
 
@@ -34,4 +35,4 @@ Publish the matching source archive and notices produced by `tools/package_relea
 
 ## Verification
 
-Passed 318 launch/return checks. Passed 29 selected gameplay/orientation checks. Reports are in `logs/final-smoke/report.json` and `logs/final-play/report.json`; each records the UF2 hash it tested. Captures are software-rendered display pixels, not LCD photographs. The earlier menu and joystick were physically confirmed by the user; full physical playthroughs and high-difficulty performance have not been verified.
+Passed desktop input/rendering checks for 21 tiny additions (3,600 logical frames per game). Passed desktop input/rendering checks for 27 gamebuino additions (3,600 logical frames per game). Current-image launch/return checks are pending. Current-image selected gameplay/orientation checks are pending. Reports are in `logs/final-smoke/report.json` and `logs/final-play/report.json`; each records the UF2 hash it tested. Captures are software-rendered display pixels, not LCD photographs. The earlier menu and joystick were physically confirmed by the user; full physical playthroughs and high-difficulty performance have not been verified.

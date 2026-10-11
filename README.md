@@ -1,6 +1,6 @@
 # PicoConsole Super Pack
 
-**318 native games** on a Raspberry Pi Pico 2 with the Waveshare Pico-LCD-1.3 (240×240 LCD, joystick and four buttons). No ROMs or SD card required.
+**366 native games** on a Raspberry Pi Pico 2 with the Waveshare Pico-LCD-1.3 (240×240 LCD, joystick and four buttons). No ROMs or SD card required.
 
 The launcher has large, high-contrast text, seven game rows and hold-to-scroll navigation. Arkanoid and Pinball play upright with left/right controls. Press **Y** to return to the menu.
 
@@ -24,7 +24,7 @@ To load manually, hold BOOTSEL while connecting the Pico 2, verify `INFO_UF2.TXT
 
 ## Sources and licences
 
-The combined firmware and PicoConsole additions are GPLv3. Original MIT, BSD, Unlicense and GPL notices remain in force for their components. Dependencies are Git submodules pinned in `.gitmodules` and `dependencies.lock.json`; they are not edited by the port scripts.
+The combined firmware and PicoConsole additions are GPLv3. Original MIT, BSD, Unlicense, LGPL and GPL notices remain in force for their components. Dependencies are Git submodules pinned in `.gitmodules` and `dependencies.lock.json`; they are not edited by the port scripts.
 
 The public build excludes imported Sokoban level sets, all Fifteen2 picture puzzles and four recreations with unclear asset provenance. Source notices and asset references were reviewed; this does not independently establish every upstream author's ownership or clear game-name trademarks. See the recorded review.
 

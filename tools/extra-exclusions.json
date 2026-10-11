@@ -1,0 +1,10 @@
+{
+  "gameStarHonor.c": "Crashes in desktop input checks; original licence URL unavailable.",
+  "gameElventure.c": "Original repository/licence unavailable for independent confirmation.",
+  "gameLightsOutAD.c": "Original WTFPL attribution not independently retrievable; existing LightsOut retained.",
+  "gameBangBang.c": "Upstream incomplete: second player has no shooting behaviour; unsuitable for this handheld.",
+  "gameFiremen.c": "Upstream table states GPLv2; original licence file unavailable and GPLv3 compatibility not established.",
+  "gameSnake5110.c": "Upstream records conflicting CC-BY-SA / GPLv3 declarations.",
+  "other Gamebuino titles": "Missing or restrictive source declarations; only the reviewed filename whitelist is prepared.",
+  "other TinyJoypad titles": "Existing duplicates or missing/restrictive source declarations; only reviewed additions are prepared."
+}

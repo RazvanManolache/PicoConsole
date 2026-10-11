@@ -1,0 +1,176 @@
+{
+  "ogbaba/Agaruino": {
+    "expected": "GPL-3.0",
+    "licence": "GPL-3.0",
+    "source": "https://github.com/ogbaba/Agaruino/blob/master/LICENSE",
+    "sha": "94a9ed024d3859793618152ea559a168bbcbb5e2",
+    "file": "Gamebuino-ogbaba-Agaruino.txt"
+  },
+  "ogbaba/Aimbuino": {
+    "expected": "GPL-3.0",
+    "licence": "NOASSERTION",
+    "source": "https://github.com/ogbaba/Aimbuino/blob/master/LICENSE",
+    "sha": "f0f60819e543ad9fd4cf6d0dcb0577c6084b0b48",
+    "file": "Gamebuino-ogbaba-Aimbuino.txt"
+  },
+  "wuuff/armageddon": {
+    "expected": "GPL-3.0",
+    "licence": "GPL-3.0",
+    "source": "https://github.com/wuuff/armageddon/blob/master/LICENSE",
+    "sha": "9cecc1d4669ee8af2ca727a5d8cde10cd8b2d7cc",
+    "file": "Gamebuino-wuuff-armageddon.txt"
+  },
+  "scmar/B-Rally": {
+    "expected": "MIT",
+    "licence": "MIT",
+    "source": "https://github.com/scmar/B-Rally/blob/master/LICENSE",
+    "sha": "ba0b02262b9f8e6d51b21c774bd3c4db85b06a6f",
+    "file": "Gamebuino-scmar-B-Rally.txt"
+  },
+  "adekto/conduit": {
+    "expected": "MIT",
+    "licence": "MIT",
+    "source": "https://github.com/adekto/conduit/blob/master/LICENSE",
+    "sha": "20efd1b3e9763444d06a2d5e47b6bf048d83e7f4",
+    "file": "Gamebuino-adekto-conduit.txt"
+  },
+  "baptistepouget/CRAZYCAR-Gamebuino": {
+    "expected": "GPL-3.0",
+    "licence": "NOASSERTION",
+    "source": "https://github.com/ogbaba/CRAZYCAR-Gamebuino/blob/master/LICENSE.txt",
+    "sha": "e2acc90ba5fd9abdb310c7004f305a9c5b37607e",
+    "file": "Gamebuino-baptistepouget-CRAZYCAR-Gamebuino.txt"
+  },
+  "ladbsoft/makerbuino-firebuino": {
+    "expected": "LGPL-3.0",
+    "licence": "LGPL-3.0",
+    "source": "https://github.com/ladbsoft/makerbuino-firebuino/blob/master/LICENSE",
+    "sha": "65c5ca88a67c30becee01c5a8816d964b03862f9",
+    "file": "Gamebuino-ladbsoft-makerbuino-firebuino.txt"
+  },
+  "ogbaba/FOOTLOL-Gamebuino": {
+    "expected": "GPL-3.0",
+    "licence": "GPL-3.0",
+    "source": "https://github.com/ogbaba/FOOTLOL-Gamebuino/blob/master/LICENSE",
+    "sha": "240b5bc07a72f45f213ae461cd268894bae6bcf1",
+    "file": "Gamebuino-ogbaba-FOOTLOL-Gamebuino.txt"
+  },
+  "arhneu/gruniozerca-gamebuino": {
+    "expected": "Unlicense",
+    "licence": "Unlicense",
+    "source": "https://github.com/arhneu/gruniozerca-gamebuino/blob/master/LICENSE",
+    "sha": "cf1ab25da0349f84a3fdd40032f0ce99db813b8b",
+    "file": "Gamebuino-arhneu-gruniozerca-gamebuino.txt"
+  },
+  "RackhamLeNoir/gamebuino-jezzball": {
+    "expected": "GPL-3.0",
+    "licence": "GPL-3.0",
+    "source": "https://github.com/ThomasPietrzak/gamebuino-jezzball/blob/master/LICENSE",
+    "sha": "94a9ed024d3859793618152ea559a168bbcbb5e2",
+    "file": "Gamebuino-RackhamLeNoir-gamebuino-jezzball.txt"
+  },
+  "ogbaba/RMKebab": {
+    "expected": "GPL-3.0",
+    "licence": "GPL-3.0",
+    "source": "https://github.com/ogbaba/RMKebab/blob/master/LICENCE",
+    "sha": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+    "file": "Gamebuino-ogbaba-RMKebab.txt"
+  },
+  "aoneill01/gamebuino-maze": {
+    "expected": "MIT",
+    "licence": "MIT",
+    "source": "https://github.com/aoneill01/gamebuino-maze/blob/master/LICENSE",
+    "sha": "6666d6760c1b938254975739f4baf428d7859483",
+    "file": "Gamebuino-aoneill01-gamebuino-maze.txt"
+  },
+  "aoneill01/gamebuino-punkt": {
+    "expected": "MIT",
+    "licence": "MIT",
+    "source": "https://github.com/aoneill01/gamebuino-punkt/blob/master/LICENSE",
+    "sha": "6666d6760c1b938254975739f4baf428d7859483",
+    "file": "Gamebuino-aoneill01-gamebuino-punkt.txt"
+  },
+  "Awot83/Gamebuino-Shufflepuck_cafe": {
+    "expected": "GPL-3.0",
+    "licence": "GPL-3.0",
+    "source": "https://github.com/Awot83/Gamebuino-Shufflepuck_cafe/blob/master/LICENSE",
+    "sha": "9cecc1d4669ee8af2ca727a5d8cde10cd8b2d7cc",
+    "file": "Gamebuino-Awot83-Gamebuino-Shufflepuck_cafe.txt"
+  },
+  "delpozzo/skibuino": {
+    "expected": "GPL-3.0",
+    "licence": "GPL-3.0",
+    "source": "https://github.com/delpozzo/skibuino/blob/master/LICENSE",
+    "sha": "94a9ed024d3859793618152ea559a168bbcbb5e2",
+    "file": "Gamebuino-delpozzo-skibuino.txt"
+  },
+  "aoneill01/gamebuino-solitaire": {
+    "expected": "MIT",
+    "licence": "MIT",
+    "source": "https://github.com/aoneill01/gamebuino-solitaire/blob/master/LICENSE",
+    "sha": "6666d6760c1b938254975739f4baf428d7859483",
+    "file": "Gamebuino-aoneill01-gamebuino-solitaire.txt"
+  },
+  "StijnCaerts/Gamebuino": {
+    "expected": "MIT",
+    "licence": "MIT",
+    "source": "https://github.com/StijnCaerts/Gamebuino/blob/master/LICENSE.md",
+    "sha": "07da7d82177053aac7f7f73a6685d223956a4bcd",
+    "file": "Gamebuino-StijnCaerts-Gamebuino.txt"
+  },
+  "Awot83/Gamebuino-TREX-QUEST": {
+    "expected": "GPL-3.0",
+    "licence": "GPL-3.0",
+    "source": "https://github.com/Awot83/Gamebuino-TREX-QUEST/blob/master/LICENSE",
+    "sha": "9cecc1d4669ee8af2ca727a5d8cde10cd8b2d7cc",
+    "file": "Gamebuino-Awot83-Gamebuino-TREX-QUEST.txt"
+  },
+  "RackhamLeNoir/gamebuino-taquin": {
+    "expected": "GPL-3.0",
+    "licence": "GPL-3.0",
+    "source": "https://github.com/ThomasPietrzak/gamebuino-taquin/blob/master/LICENSE",
+    "sha": "94a9ed024d3859793618152ea559a168bbcbb5e2",
+    "file": "Gamebuino-RackhamLeNoir-gamebuino-taquin.txt"
+  },
+  "Awot83/Gamebuino-Thunder-Shoot": {
+    "expected": "GPL-3.0",
+    "licence": "GPL-3.0",
+    "source": "https://github.com/Awot83/Gamebuino-Thunder-Shoot/blob/master/LICENSE",
+    "sha": "9cecc1d4669ee8af2ca727a5d8cde10cd8b2d7cc",
+    "file": "Gamebuino-Awot83-Gamebuino-Thunder-Shoot.txt"
+  },
+  "wuuff/under-the-tower": {
+    "expected": "GPL-3.0",
+    "licence": "GPL-3.0",
+    "source": "https://github.com/wuuff/under-the-tower/blob/master/LICENSE",
+    "sha": "94a9ed024d3859793618152ea559a168bbcbb5e2",
+    "file": "Gamebuino-wuuff-under-the-tower.txt"
+  },
+  "delpozzo/videopoker-gamebuino": {
+    "expected": "GPL-3.0",
+    "licence": "GPL-3.0",
+    "source": "https://github.com/delpozzo/videopoker-gamebuino/blob/master/LICENSE",
+    "sha": "94a9ed024d3859793618152ea559a168bbcbb5e2",
+    "file": "Gamebuino-delpozzo-videopoker-gamebuino.txt"
+  },
+  "smogheap/bub": {
+    "licence": "GPL-3.0",
+    "source": "https://gitlab.com/smogheap/bub/-/raw/master/LICENSE",
+    "file": "Gamebuino-smogheap-bub.txt"
+  },
+  "j0ff/tetrino": {
+    "licence": "MIT",
+    "source": "https://raw.githubusercontent.com/j0ff/tetrino/master/src/tetrino/game.h",
+    "file": "Gamebuino-additional-declarations.txt"
+  },
+  "marcushutchings/DarkTower": {
+    "licence": "GPL-3.0-or-later",
+    "source": "https://raw.githubusercontent.com/marcushutchings/DarkTower/master/DarkTower.cpp",
+    "file": "Gamebuino-additional-declarations.txt"
+  },
+  "Gamebuino/Gamebuino-Classic": {
+    "licence": "LGPL-3.0-or-later",
+    "source": "https://raw.githubusercontent.com/Gamebuino/Gamebuino-Classic/master/Gamebuino.h",
+    "file": "Gamebuino-additional-declarations.txt"
+  }
+}

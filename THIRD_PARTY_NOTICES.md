@@ -1,6 +1,6 @@
 # Component notices and modifications
 
-PicoConsole Super Pack 0.3 combines GPLv3 programs with GPL-compatible permissive components. The combined firmware is distributed under GNU GPL version 3; original component licences and notices are retained. This document does not relicense unrelated files in upstream repositories.
+PicoConsole Super Pack 0.4 combines GPLv3 programs with GPL-compatible permissive components. The combined firmware is distributed under GNU GPL version 3; original component licences and notices are retained. This document does not relicense unrelated files in upstream repositories.
 
 | Component | Authors / source | Licence text |
 |---|---|---|
@@ -30,3 +30,13 @@ PicoConsole Super Pack 0.3 combines GPLv3 programs with GPL-compatible permissiv
 Original author notices remain in prepared source. Credits are not endorsements. Game names may have separate trademark protection; no affiliation with original commercial game publishers is claimed. Detailed inclusion/exclusion decisions: docs/LICENSE_AUDIT.md. Exact source revisions: dependencies.lock.json.
 
 For binary redistribution, include this document and LICENSES, and make the matching complete source bundle available alongside the UF2. Keep the UF2 and source release manifests together. Git submodule references identify origins but do not replace corresponding-source availability.
+
+## Additional collections in 0.4
+
+The selected TinyJoypad SDL ports are by joyrider3774 and the original authors listed per game in tools/tiny-games.json. The selected Gamebuino SDL ports are by joyrider3774 and the original authors in tools/gamebuino-games.json. Only whitelisted source files are prepared. Full mixed-licence upstream mirrors are excluded from release archives.
+
+Tiny additions retain MIT notices for obono, datacute, Winston Lu and Lorandil, the Unlicense for Meteor Storm, and GPLv3 notices for Daniel C and other authors. Exact upstream notices are in LICENSES/TinyExtra-*.txt and prepared source.
+
+Gamebuino games retain MIT, GPLv3, LGPLv3 and Unlicense notices in LICENSES/Gamebuino-*.txt and prepared source. The Gamebuino compatibility API and fonts derive from Aurelien Rodot (copyright 2014), LGPLv3-or-later; its declaration and full LGPL text accompany the source. Firebuino is LGPLv3. Tetrino includes MIT code by Laurens Rodriguez Oscanoa (2011/2013) and Joffrey Carlier (2014). Dark Tower is GPLv3-or-later by Marcus Hutchings (2018).
+
+PicoConsole changes: standalone C backends replace SDL, RAM-only EEPROM, audio stubs, constant tables in flash, shared game RAM, square-screen scaling, white text, upright falling-block controls/rendering and enlarged Number Place digits. All modified files are marked with the modification date. Desktop checks do not replace Pico hardware validation.

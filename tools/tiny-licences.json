@@ -1,0 +1,27 @@
+{
+  "Obono": {
+    "source": "https://github.com/obono/TinyJoypadWorks/blob/main/LICENSE",
+    "sha": "7211ef708a3e1c3f37da254106d015d24c97ae3f",
+    "licence": "MIT"
+  },
+  "BullsAndCows": {
+    "source": "https://github.com/datacute/TinyBullsAndCows/blob/master/LICENSE",
+    "sha": "b884465f77024ef0d4840ff3c036985f08f0e0f0",
+    "licence": "MIT"
+  },
+  "LaserPong": {
+    "source": "https://github.com/Winston-Lu/ATTiny85_Pong/blob/master/LICENSE",
+    "sha": "93a77fe405d0af57a2d8756ba84a4374569b5abe",
+    "licence": "MIT"
+  },
+  "TinyDungeon": {
+    "source": "https://github.com/Lorandil/TinyDungeon/blob/main/LICENSE",
+    "sha": "339d5986ba49554c6af5622111d318a59b4f6f7f",
+    "licence": "MIT"
+  },
+  "MeteorStorm": {
+    "source": "https://github.com/theisolinearchip/attiny85_microgame_meteor_storm/blob/main/LICENSE",
+    "sha": "fdddb29aa445bf3d6a5d843d6dd77e10a9f99657",
+    "licence": "Unlicense"
+  }
+}

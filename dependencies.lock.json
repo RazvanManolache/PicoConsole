@@ -23,5 +23,15 @@
     "path": "upstream/pico-sdk/lib/tinyusb",
     "commit": "86ad6e56c1700e85f1c5678607a762cfe3aa2f47",
     "url": "https://github.com/hathach/tinyusb.git"
+  },
+  "tinyjoypad-sdl": {
+    "path": "upstream/tinyjoypad-sdl",
+    "commit": "7ec5c2be16094c97ec685dcc02584f19820d6bc4",
+    "url": "https://github.com/joyrider3774/Tinyjoypad_SDL.git"
+  },
+  "gamebuino-sdl": {
+    "path": "upstream/gamebuino-sdl",
+    "commit": "96ef2d8cebcea4548d18f2aef540bb6cf7463c1c",
+    "url": "https://github.com/joyrider3774/gamebuino_classic_sdl.git"
   }
 }

@@ -9,6 +9,8 @@ over='    __game_ram_start = ALIGN(.,8);\n    OVERLAY __game_ram_start : {\n'
 for g in games:
  pattern='*games/'+g['id']+'/*.obj' if g['group']!='CRISP' else '*crisp/games/'+g['folder']+'.obj'
  if g['group']=='POCKET':pattern='*pocket/*.obj'
+ if g['group']=='TINYEXTRA':pattern='*tiny/games/'+g['folder']+'.obj'
+ if g['group']=='GAMEBUINO':pattern='*gamebuino/*.obj'
  over+='        .ram_'+g['id']+' { '+pattern+'(.bss .bss.* COMMON) . = ALIGN(8); }\n'
 over+='    } > RAM\n    __game_ram_end = .;\n\n'
 s=s.replace('    .tbss (NOLOAD)',over+'    .tbss (NOLOAD)')

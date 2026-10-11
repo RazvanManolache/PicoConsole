@@ -10,3 +10,9 @@
 [submodule "upstream/pico-sdk"]
 	path = upstream/pico-sdk
 	url = https://github.com/raspberrypi/pico-sdk.git
+[submodule "upstream/tinyjoypad-sdl"]
+	path = upstream/tinyjoypad-sdl
+	url = https://github.com/joyrider3774/Tinyjoypad_SDL.git
+[submodule "upstream/gamebuino-sdl"]
+	path = upstream/gamebuino-sdl
+	url = https://github.com/joyrider3774/gamebuino_classic_sdl.git

@@ -31,7 +31,7 @@ def replace_body(text,name,body):
 
 for game in catalog:
     ident=game['id']; folder=game['folder']; group=game['group']
-    if group in ('CRISP','POCKET','ORIGINAL'):
+    if group in ('CRISP','POCKET','ORIGINAL','TINYEXTRA','GAMEBUINO'):
         game['sources']=[]
         continue
     source=ROOT/'upstream/PicoLibSDK/PicoPad'/group/folder
@@ -130,7 +130,7 @@ static const char* decode_level(const char* s) {
 registry='#pragma once\n'+'\n'.join('namespace '+g['id']+' { void run(); }' for g in catalog)
 registry+='\nconstexpr int GAME_COUNT='+str(len(catalog))+';\n'
 (ROOT/'firmware/games/registry.h').write_text(registry)
-table='\n'.join('{'+json.dumps(g['title'])+', '+g['id']+'::run, '+str(int(g['group']=='TINYGAME'))+', '+str(2 if g['id']=='pocket_3' else int(g['group'] in ('CRISP','ORIGINAL') or g['id'] in ('pocket_9','pocket_7','pocket_8','pocket_1','pocket_2','pocket_4','pocket_5')))+', '+str(g.get('rotate',0))+', "'+g['controls']+'"},' for g in catalog)
+table='\n'.join('{'+json.dumps(g['title'])+', '+g['id']+'::run, '+str(int(g['group'] in ('TINYGAME','TINYEXTRA')))+', '+str(2 if g['id']=='pocket_3' else int(g['group'] in ('CRISP','ORIGINAL','TINYEXTRA','GAMEBUINO') or g['id'] in ('pocket_9','pocket_7','pocket_8','pocket_1','pocket_2','pocket_4','pocket_5')))+', '+str(g.get('rotate',0))+', "'+g['controls']+'"},' for g in catalog)
 (ROOT/'firmware/games/registry.inc').write_text(table+'\n')
 cmake='set(NATIVE_GAME_SOURCES\n'+'\n'.join('  '+p for g in catalog for p in g['sources'])+'\n)\n'
 (ROOT/'firmware/games/sources.cmake').write_text(cmake)

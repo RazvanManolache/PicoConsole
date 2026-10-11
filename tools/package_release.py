@@ -22,6 +22,7 @@ def main():
   add(ROOT/name)
  for name in ('BUILD.md','NATIVE_PACK.md','INSTALLED_GAMES.md','LICENSE_AUDIT.md','HARDWARE.md'):add(ROOT/'docs'/name)
  for name in ('build.py','build.ps1','requirements.txt','audit_release.py','asset-policy.json','base_catalog.json','native_catalog.json','prepare_native.py','prepare_crisp.py','prepare_pocket.py','prepare_draw.py','prepare_linker.py','generate_puzzles.py','compress_levels.py','make_uf2.py','record_build.py','write_pack_docs.py','package_release.py','console_usb.py','smoke_catalog.py','check_final_play.py','check_menu.py'):add(ROOT/'tools'/name)
+ for name in ('prepare_tiny.py','prepare_gamebuino.py','tiny-games.json','gamebuino-games.json','tiny-licences.json','gamebuino-licences.json','extra-exclusions.json','check_tiny_host.py'):add(ROOT/'tools'/name)
  # Exact compiler dependencies provide all headers and assembly includes.
  deps=subprocess.check_output([a.ninja,'-C',str(build),'-t','deps'],text=True)
  sdk=(ROOT/'upstream/pico-sdk').resolve();tiny=sdk/'lib/tinyusb'
@@ -47,8 +48,9 @@ def main():
  # No whole PicoLibSDK mirror is needed: modified sources are included above.
  assert all(not p.is_relative_to(ROOT/'upstream/PicoLibSDK') for p in selected)
  files={p.relative_to(ROOT).as_posix():sha(p) for p in sorted(selected)}
- out=ROOT/'dist/release';out.mkdir(parents=True,exist_ok=True)
- prefix='picoconsole-0.3';source=out/f'{prefix}-source.zip'
+ version=m['firmware'].removeprefix('native-')
+ out=ROOT/'dist/releases'/version;out.mkdir(parents=True,exist_ok=True)
+ prefix='picoconsole-'+version;source=out/f'{prefix}-source.zip'
  with zipfile.ZipFile(source,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
   for name in files:z.write(ROOT/name,prefix+'/'+name)
   z.writestr(prefix+'/release-source-files.json',json.dumps(files,indent=2)+'\n')
@@ -60,12 +62,19 @@ def main():
  shutil.copyfile(ROOT/'dist/pico_console.uf2',out/f'{prefix}.uf2')
  shutil.copyfile(ROOT/'dist/build-manifest.json',out/'build-manifest.json')
  shutil.copyfile(ROOT/'logs/licence-audit.json',out/'licence-audit.json')
+ host_checks={}
+ for collection in ('tiny','gamebuino'):
+  host=json.loads((ROOT/'logs'/(collection+'-host')/'report.json').read_text())
+  assert host['result']=='passed'
+  assert all(m['source_sha256'].get(k)==v for k,v in host['source_sha256'].items()),'Host-tested source differs'
+  shutil.copyfile(ROOT/'logs'/(collection+'-host')/'report.json',out/(collection+'-desktop-checks.json'))
+  host_checks[collection]=len(host['checks'])
  verification='Required before publishing: extract and run build.py --prepared; record its UF2 hash.'
  if a.verified_rebuild:
   digest=sha(a.verified_rebuild)
   assert digest==m['uf2_sha256'],'Source rebuild differs from release UF2'
   verification={'passed':True,'method':'Extracted prepared source; offline build with the recorded compiler; byte-identical UF2','uf2_sha256':digest}
- report={'game_count':m['game_count'],'uf2_sha256':m['uf2_sha256'],'source_files':len(files),'source_zip_sha256':sha(source),'source_rebuild_verification':verification}
+ report={'game_count':m['game_count'],'uf2_sha256':m['uf2_sha256'],'source_files':len(files),'source_zip_sha256':sha(source),'source_rebuild_verification':verification,'desktop_checks':host_checks,'hardware_validation':'Pending: Pico disconnected. Earlier 0.3 device checks do not validate this image.'}
  (out/'release-manifest.json').write_text(json.dumps(report,indent=2)+'\n')
  print(json.dumps(report,indent=2))
 
