@@ -1,0 +1,13 @@
+{
+  "excluded_games": {
+    "pad_eggs": "Handheld-game artwork has no separate provenance; conservatively excluded.",
+    "pad_flappy": "Imported 1984 commercial-game levels; permission not established.",
+    "pad_pacman": "Commercial-game logo, maze and recognisable artwork; separate permission not established.",
+    "pad_zoom": "Explicit original 1984 copyright and recreated content; permission not established."
+  },
+  "sokoban": "All imported level sets are excluded, including the intro. Replaced with original, deterministic reverse-pull-generated puzzles under GPL-3.0-only.",
+  "fifteen2": "Digits puzzle only. All picture puzzles excluded for unclear image provenance.",
+  "retained_tinyjoypad": "GPL-3.0-or-later declarations cover code and bitmap headers; no contrary embedded asset terms found.",
+  "retained_picopad": "PicoLibSDK author Unlicense for own code/assets. Explicit third-party/recreation exceptions above are excluded. Pictor author also expressly permits reuse of the game and its parts on the project website.",
+  "scope": "Source notices and embedded asset references reviewed. This is a documented engineering review, not a guarantee of third-party ownership or trademark clearance."
+}

@@ -1,0 +1,27 @@
+{
+  "PicoLibSDK": {
+    "path": "upstream/PicoLibSDK",
+    "commit": "3fdc771a7d0ae46cb0eefb6da3db3677b3ec5d51",
+    "url": "https://github.com/Panda381/PicoLibSDK.git"
+  },
+  "crisp-sdl": {
+    "path": "upstream/crisp-sdl",
+    "commit": "04bc2c4cfc2853628eda25a46190bb7ac6fe216a",
+    "url": "https://github.com/joyrider3774/crisp-game-lib-portable-sdl.git"
+  },
+  "pocket-gamer": {
+    "path": "upstream/pocket-gamer",
+    "commit": "1d05ba25afbb2bcb7ee6206863f30f153ec64852",
+    "url": "https://github.com/GrgoMariani/Raspberry-Pico-Pocket-Gamer.git"
+  },
+  "pico-sdk": {
+    "path": "upstream/pico-sdk",
+    "commit": "a1438dff1d38bd9c65dbd693f0e5db4b9ae91779",
+    "url": "https://github.com/raspberrypi/pico-sdk.git"
+  },
+  "tinyusb": {
+    "path": "upstream/pico-sdk/lib/tinyusb",
+    "commit": "86ad6e56c1700e85f1c5678607a762cfe3aa2f47",
+    "url": "https://github.com/hathach/tinyusb.git"
+  }
+}

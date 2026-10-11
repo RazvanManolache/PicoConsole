@@ -1,0 +1,12 @@
+[submodule "upstream/PicoLibSDK"]
+	path = upstream/PicoLibSDK
+	url = https://github.com/Panda381/PicoLibSDK.git
+[submodule "upstream/crisp-sdl"]
+	path = upstream/crisp-sdl
+	url = https://github.com/joyrider3774/crisp-game-lib-portable-sdl.git
+[submodule "upstream/pocket-gamer"]
+	path = upstream/pocket-gamer
+	url = https://github.com/GrgoMariani/Raspberry-Pico-Pocket-Gamer.git
+[submodule "upstream/pico-sdk"]
+	path = upstream/pico-sdk
+	url = https://github.com/raspberrypi/pico-sdk.git

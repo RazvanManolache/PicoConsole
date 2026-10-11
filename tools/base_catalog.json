@@ -1,0 +1,322 @@
+[
+  {
+    "id": "tinytris",
+    "folder": "TINYTRIS",
+    "group": "TINYGAME",
+    "title": "TINYTRIS",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "arkanoid",
+    "folder": "ARKANOID",
+    "group": "TINYGAME",
+    "title": "ARKANOID",
+    "rotate": 1,
+    "controls": "LEFT/RIGHT PADDLE"
+  },
+  {
+    "id": "amania",
+    "folder": "AMANIA",
+    "group": "TINYGAME",
+    "title": "A-MANIA",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "downland",
+    "folder": "DOWNLAND",
+    "group": "TINYGAME",
+    "title": "DOWNLAND",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "invaders",
+    "folder": "INVADERS",
+    "group": "TINYGAME",
+    "title": "TINY INVADERS",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "nohzdyve",
+    "folder": "NOHZDYVE",
+    "group": "TINYGAME",
+    "title": "NOHZDYVE",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "tbomber",
+    "folder": "TBOMBER",
+    "group": "TINYGAME",
+    "title": "TINY BOMBER",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "tddug",
+    "folder": "TDDUG",
+    "group": "TINYGAME",
+    "title": "TINY DIG DUG",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "tgilbert",
+    "folder": "TGILBERT",
+    "group": "TINYGAME",
+    "title": "TINY GILBERT",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "tinybert",
+    "folder": "TINYBERT",
+    "group": "TINYGAME",
+    "title": "TINY BERT",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "tinybike",
+    "folder": "TINYBIKE",
+    "group": "TINYGAME",
+    "title": "TINY BIKE",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "tinydoc",
+    "folder": "TINYDOC",
+    "group": "TINYGAME",
+    "title": "TINY DOC",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "tinypac",
+    "folder": "TINYPAC",
+    "group": "TINYGAME",
+    "title": "TINY PAC",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "tinypipe",
+    "folder": "TINYPIPE",
+    "group": "TINYGAME",
+    "title": "TINY PIPE",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "tmissile",
+    "folder": "TMISSILE",
+    "group": "TINYGAME",
+    "title": "MISSILE COMMAND",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "tmorpion",
+    "folder": "TMORPION",
+    "group": "TINYGAME",
+    "title": "TIC TAC TOE",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "tpinball",
+    "folder": "TPINBALL",
+    "group": "TINYGAME",
+    "title": "TINY PINBALL",
+    "rotate": 2,
+    "controls": "LEFT/RIGHT FLIPPERS"
+  },
+  {
+    "id": "tplaque",
+    "folder": "TPLAQUE",
+    "group": "TINYGAME",
+    "title": "TINY PLAQUE",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "tsquest",
+    "folder": "TSQUEST",
+    "group": "TINYGAME",
+    "title": "SPACE QUEST",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "ttrick",
+    "folder": "TTRICK",
+    "group": "TINYGAME",
+    "title": "TINY TRICK",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B"
+  },
+  {
+    "id": "pad_ants",
+    "folder": "ANTS",
+    "group": "GAME",
+    "title": "ANTS",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_atoms",
+    "folder": "ATOMS",
+    "group": "GAME",
+    "title": "ATOMS",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_chess",
+    "folder": "CHESS",
+    "group": "GAME",
+    "title": "CHESS",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_fifteen",
+    "folder": "FIFTEEN",
+    "group": "GAME",
+    "title": "FIFTEEN",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_fifteen2",
+    "folder": "FIFTEEN2",
+    "group": "GAME",
+    "title": "FIFTEEN2",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_ghostrac",
+    "folder": "GHOSTRAC",
+    "group": "GAME",
+    "title": "GHOSTRAC",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_invaders",
+    "folder": "INVADERS",
+    "group": "GAME",
+    "title": "INVADERS",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_life",
+    "folder": "LIFE",
+    "group": "GAME",
+    "title": "LIFE",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_maze",
+    "folder": "MAZE",
+    "group": "GAME",
+    "title": "MAZE",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_pictor",
+    "folder": "PICTOR",
+    "group": "GAME",
+    "title": "PICTOR",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_raptor",
+    "folder": "RAPTOR",
+    "group": "GAME",
+    "title": "RAPTOR",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_sokoban",
+    "folder": "SOKOBAN",
+    "group": "GAME",
+    "title": "SOKOBAN",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_tetris",
+    "folder": "TETRIS",
+    "group": "GAME",
+    "title": "TETRIS",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_train",
+    "folder": "TRAIN",
+    "group": "GAME",
+    "title": "TRAIN",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_tvtennis",
+    "folder": "TVTENNIS",
+    "group": "GAME",
+    "title": "TVTENNIS",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "pad_vegaslot",
+    "folder": "VEGASLOT",
+    "group": "GAME",
+    "title": "VEGASLOT",
+    "rotate": 0,
+    "controls": "JOYSTICK + A/B/X"
+  },
+  {
+    "id": "original_minefield",
+    "folder": "",
+    "group": "ORIGINAL",
+    "title": "MINEFIELD",
+    "rotate": 0,
+    "controls": "STICK / A OPEN B FLAG"
+  },
+  {
+    "id": "original_reversi",
+    "folder": "",
+    "group": "ORIGINAL",
+    "title": "REVERSI",
+    "rotate": 0,
+    "controls": "STICK / A PLACE"
+  },
+  {
+    "id": "original_memory",
+    "folder": "",
+    "group": "ORIGINAL",
+    "title": "MEMORY PAIRS",
+    "rotate": 0,
+    "controls": "STICK / A REVEAL"
+  },
+  {
+    "id": "original_simon",
+    "folder": "",
+    "group": "ORIGINAL",
+    "title": "SIMON",
+    "rotate": 0,
+    "controls": "STICK / A START"
+  }
+]
