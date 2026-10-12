@@ -16,7 +16,7 @@ def main():
  def add(path):
   path=Path(path)
   if path.is_file():selected.add(path.resolve())
- for d in ('firmware','LICENSES','assets/menu-previews'):
+ for d in ('firmware','LICENSES','assets/menu-previews','docs/images'):
   for path in (ROOT/d).rglob('*'):add(path)
  for name in ('README.md','LICENSE','COPYING.txt','THIRD_PARTY_NOTICES.md','dependencies.lock.json'):
   add(ROOT/name)

@@ -1,0 +1,89 @@
+{
+  "firmware": "native-0.6",
+  "related_uf2_sha256": "2a8ffc47568ddd7a508e7a6575eda72ee7b62ac655d0f156475c0bc0d2e3eb6e",
+  "hardware_photographs": false,
+  "captures": {
+    "menu-all.png": {
+      "source": "logs/library-host/all.png",
+      "sha256": "9a7fefbc02f9359aaf4a0ff4452806f28a27f8e8e71c76e58e1e9fad7c068808",
+      "capture_kind": "Desktop render of the shared 0.6 menu with sample library fixtures",
+      "renderer_source_sha256": {
+        "firmware/library.cpp": "2775f0695e97219a0adf1464e2eb273ca4a02ffb3d2ec44334153fd883137949",
+        "firmware/library_flash.cpp": "6f78075e6d6811edfcee1f254190862e36f45e3adf88fd8ecca52f004f42ea92",
+        "firmware/library_screen.cpp": "6b5a923285dbc5a8c1241e0c42445809c791fc1ad3b1921a01e5b365079f76ba",
+        "firmware/menu_previews.cpp": "fc1baec136eb794bfcb8d7366a6b41becff1eb7cc781570a90215c87b89a6f32",
+        "firmware/library.h": "dc1e236e76d44fea7cb30b1dffa907348ee53aef057daa48ebc9db1f205c5718",
+        "firmware/library_flash.h": "d8de98deb9cfa9d3c4f5bd536644bf87106982776908f762e749364cdb518e40",
+        "firmware/library_screen.h": "296cf98f00d45b34c0237fa552919fe8c981c3c2ea7451ba93d707b5358f1e58",
+        "firmware/menu_previews.h": "e4b11da6ce851114f92da324f5cb61c06ef1765ff78af093fa499213bfe57d80",
+        "firmware/menu_previews.inc": "c7619022fa1ff7626b700783c7b4fd3f8961fae18bb71abca32b6f6dbc165579",
+        "firmware/console.cpp": "4fc7ae9d4c3586e2d01698d425085d9207a7821f83f62e751e5dc5e64cb81dea",
+        "firmware/games/menu_keys.inc": "d99e05c4b1b3839a0139a87c93d3bf98cb32af7a791b80f704f7a87497e74651",
+        "firmware/CMakeLists.txt": "41c0e2b36cc7c7020115c78d8ea1c8e40a9f1be9aa023ee1e8bd752c41897c07",
+        "firmware/console_memmap.ld": "065a6c4ba79c99a04c821cd2ce52b8933ab5213509eb648b603c3294d120e3a4"
+      }
+    },
+    "menu-favorites.png": {
+      "source": "logs/library-host/favorites.png",
+      "sha256": "0c6e0326486407035b6a4ac628a862d798c7b7eeb3f0c94fd06dbe09e84bf37c",
+      "capture_kind": "Desktop render of the shared 0.6 menu with sample library fixtures",
+      "renderer_source_sha256": {
+        "firmware/library.cpp": "2775f0695e97219a0adf1464e2eb273ca4a02ffb3d2ec44334153fd883137949",
+        "firmware/library_flash.cpp": "6f78075e6d6811edfcee1f254190862e36f45e3adf88fd8ecca52f004f42ea92",
+        "firmware/library_screen.cpp": "6b5a923285dbc5a8c1241e0c42445809c791fc1ad3b1921a01e5b365079f76ba",
+        "firmware/menu_previews.cpp": "fc1baec136eb794bfcb8d7366a6b41becff1eb7cc781570a90215c87b89a6f32",
+        "firmware/library.h": "dc1e236e76d44fea7cb30b1dffa907348ee53aef057daa48ebc9db1f205c5718",
+        "firmware/library_flash.h": "d8de98deb9cfa9d3c4f5bd536644bf87106982776908f762e749364cdb518e40",
+        "firmware/library_screen.h": "296cf98f00d45b34c0237fa552919fe8c981c3c2ea7451ba93d707b5358f1e58",
+        "firmware/menu_previews.h": "e4b11da6ce851114f92da324f5cb61c06ef1765ff78af093fa499213bfe57d80",
+        "firmware/menu_previews.inc": "c7619022fa1ff7626b700783c7b4fd3f8961fae18bb71abca32b6f6dbc165579",
+        "firmware/console.cpp": "4fc7ae9d4c3586e2d01698d425085d9207a7821f83f62e751e5dc5e64cb81dea",
+        "firmware/games/menu_keys.inc": "d99e05c4b1b3839a0139a87c93d3bf98cb32af7a791b80f704f7a87497e74651",
+        "firmware/CMakeLists.txt": "41c0e2b36cc7c7020115c78d8ea1c8e40a9f1be9aa023ee1e8bd752c41897c07",
+        "firmware/console_memmap.ld": "065a6c4ba79c99a04c821cd2ce52b8933ab5213509eb648b603c3294d120e3a4"
+      }
+    },
+    "menu-recent.png": {
+      "source": "logs/library-host/recent.png",
+      "sha256": "fa1a1775023b25c2be30e6e742f39759587eb773a100936af690f620bbfaa427",
+      "capture_kind": "Desktop render of the shared 0.6 menu with sample library fixtures",
+      "renderer_source_sha256": {
+        "firmware/library.cpp": "2775f0695e97219a0adf1464e2eb273ca4a02ffb3d2ec44334153fd883137949",
+        "firmware/library_flash.cpp": "6f78075e6d6811edfcee1f254190862e36f45e3adf88fd8ecca52f004f42ea92",
+        "firmware/library_screen.cpp": "6b5a923285dbc5a8c1241e0c42445809c791fc1ad3b1921a01e5b365079f76ba",
+        "firmware/menu_previews.cpp": "fc1baec136eb794bfcb8d7366a6b41becff1eb7cc781570a90215c87b89a6f32",
+        "firmware/library.h": "dc1e236e76d44fea7cb30b1dffa907348ee53aef057daa48ebc9db1f205c5718",
+        "firmware/library_flash.h": "d8de98deb9cfa9d3c4f5bd536644bf87106982776908f762e749364cdb518e40",
+        "firmware/library_screen.h": "296cf98f00d45b34c0237fa552919fe8c981c3c2ea7451ba93d707b5358f1e58",
+        "firmware/menu_previews.h": "e4b11da6ce851114f92da324f5cb61c06ef1765ff78af093fa499213bfe57d80",
+        "firmware/menu_previews.inc": "c7619022fa1ff7626b700783c7b4fd3f8961fae18bb71abca32b6f6dbc165579",
+        "firmware/console.cpp": "4fc7ae9d4c3586e2d01698d425085d9207a7821f83f62e751e5dc5e64cb81dea",
+        "firmware/games/menu_keys.inc": "d99e05c4b1b3839a0139a87c93d3bf98cb32af7a791b80f704f7a87497e74651",
+        "firmware/CMakeLists.txt": "41c0e2b36cc7c7020115c78d8ea1c8e40a9f1be9aa023ee1e8bd752c41897c07",
+        "firmware/console_memmap.ld": "065a6c4ba79c99a04c821cd2ce52b8933ab5213509eb648b603c3294d120e3a4"
+      }
+    },
+    "sokoban.png": {
+      "source": "logs/preview-native/pad_sokoban-14.png",
+      "sha256": "c7a9ef3e2ce764415c48bdd7cc9ecf84580e7c5c683015a9679ab3e3bc8b4a4b",
+      "game_id": "pad_sokoban",
+      "capture_kind": "Desktop game-engine render",
+      "component_terms": "Same terms and notices as this curated game; see LICENSES and THIRD_PARTY_NOTICES.md",
+      "game_source_sha256": "5c3b0678897800730ee6e79b70e74b88cdebdf76247c06046500aa7d47a3df1f"
+    },
+    "b-rally.png": {
+      "source": "logs/preview-extra/gb_brally-0899.png",
+      "sha256": "b2c121124dc0318495e4bbf08d913dc294ece13586f3935381a4b966f2682454",
+      "game_id": "gb_brally",
+      "capture_kind": "Desktop game-engine render",
+      "component_terms": "Same terms and notices as this curated game; see LICENSES and THIRD_PARTY_NOTICES.md"
+    },
+    "tiny-2048.png": {
+      "source": "logs/preview-extra/tj_t2048-0449.png",
+      "sha256": "6e516001aa3a1177a56fceaaac50ad33d15f5628ec26f5b6882d176fb99f1868",
+      "game_id": "tj_t2048",
+      "capture_kind": "Desktop game-engine render",
+      "component_terms": "Same terms and notices as this curated game; see LICENSES and THIRD_PARTY_NOTICES.md"
+    }
+  }
+}
