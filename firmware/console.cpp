@@ -144,7 +144,7 @@ static void emit_shot() {
     fflush(stdout); puts("\nEND_FRAME");
 }
 static void send_status() {
-    printf("{\"version\":\"native-0.5\",\"mode\":\"%s\",\"game\":%d,\"frames\":%lu,\"returns\":%lu,\"keys\":%lu,\"seen_physical\":%lu,\"uptime_ms\":%lu,\"count\":%d,\"selected\":%d,\"rotated\":%d,\"view\":\"%s\",\"view_row\":%d,\"favorites\":%d,\"recent\":%d,\"save_failed\":%d}\n",
+    printf("{\"version\":\"native-0.6\",\"mode\":\"%s\",\"game\":%d,\"frames\":%lu,\"returns\":%lu,\"keys\":%lu,\"seen_physical\":%lu,\"uptime_ms\":%lu,\"count\":%d,\"selected\":%d,\"rotated\":%d,\"view\":\"%s\",\"view_row\":%d,\"favorites\":%d,\"recent\":%d,\"save_failed\":%d}\n",
         active==-1?"menu":active==-2?"diagnostic":"game",active,
         (unsigned long)frames,(unsigned long)menu_returns,(unsigned long)read_keys(),(unsigned long)seen,(unsigned long)now_ms(),GAME_COUNT,game_library.selected(),rotated,
         game_library.view_name(),game_library.cursor(),game_library.favorite_count(),game_library.recent_count(),save_failed);
@@ -268,8 +268,8 @@ int main() {
         bool redraw=false;
         if(pressed&1u){game_library.move(-1);redraw=true;}
         if(pressed&2u){game_library.move(1);redraw=true;}
-        if(pressed&4u){game_library.move(-7);redraw=true;}
-        if(pressed&8u){game_library.move(7);redraw=true;}
+        if(pressed&4u){game_library.move(-library::menu_rows);redraw=true;}
+        if(pressed&8u){game_library.move(library::menu_rows);redraw=true;}
         if(pressed&(1u<<6)){game_library.cycle();redraw=true;}
         if(pressed&(1u<<8)){game_library.all();redraw=true;}
         if(pressed&(1u<<7)){profile_dirty|=game_library.toggle();save_profile();redraw=true;}

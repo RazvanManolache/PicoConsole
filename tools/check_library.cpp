@@ -4,6 +4,7 @@
 #include "library.h"
 #include "library_flash.h"
 #include "library_screen.h"
+#include "menu_previews.h"
 #include "hardware/flash.h"
 #include "pico/stdlib.h"
 #include <cassert>
@@ -49,6 +50,11 @@ static void capture(const std::string& out,const char* name,const Menu& menu,boo
 }
 int main(int argc,char** argv){
     CHECK(argc==2);for(int i=0;i<40;++i)keys[i]=100+i;
+    CHECK(library::menu_rows==5);
+    CHECK(library::preview_count()==int(sizeof(catalog_keys)/sizeof(*catalog_keys)));
+    uint8_t thumbnail[library::preview_bytes];
+    CHECK(!library::preview_bitmap(-1,thumbnail)&&!library::preview_bitmap(library::preview_count(),thumbnail));
+    for(int i=0;i<library::preview_count();++i)CHECK(library::preview_bitmap(i,thumbnail));
     Menu m(keys,40);
     CHECK(m.size()==41&&m.selected()==0);
     m.move(-1);CHECK(m.selected()==40&&!m.toggle()&&!m.played(40));
@@ -60,7 +66,7 @@ int main(int argc,char** argv){
     m.move(1);CHECK(m.selected()==9);CHECK(m.toggle());CHECK(m.size()==1&&m.selected()==3);
     CHECK(m.toggle());CHECK(m.size()==0&&m.cursor()==0);
     m.all();m.focus(31);m.cycle();m.cycle();m.all();CHECK(m.selected()==31);
-    m.move(7);CHECK(m.selected()==38);m.move(7);CHECK(m.selected()==4);
+    m.move(library::menu_rows);CHECK(m.selected()==36);m.move(library::menu_rows);CHECK(m.selected()==0);
     for(int i=0;i<40;++i)CHECK(m.played(i));
     CHECK(m.recent_count()==20);m.all();m.cycle();m.cycle();CHECK(m.game_at(0)==39&&m.game_at(19)==20);
     m.move(7);CHECK(m.selected()==32);CHECK(m.played(32));CHECK(m.selected()==32&&m.game_at(1)==39);

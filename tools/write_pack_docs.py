@@ -25,11 +25,11 @@ for i,x in enumerate(g,1):
  lines.append(f"| {i} | {x['title']} | {x['group']} | {c} |")
 lines+=['','**Y returns to the menu in every game.** Two-player games share the device in turns. Full playthroughs have not been performed.','']
 (root/'docs/INSTALLED_GAMES.md').write_text('\n'.join(lines))
-(root/'docs/NATIVE_PACK.md').write_text(f'''# Curated native pack 0.5
+(root/'docs/NATIVE_PACK.md').write_text(f'''# Curated native pack 0.6
 
 **{len(g)} native games** for Pico 2 and Waveshare Pico-LCD-1.3, with no ROMs, microSD or speaker required.
 
-Includes {counts['TINYGAME']} TinyJoypad games, {counts['GAME']} selected PicoPad games, {counts['CRISP']} Crisp games, {counts['POCKET']} Pocket Gamer games {counts['ORIGINAL']} original PicoConsole games, {counts['TINYEXTRA']} additional TinyJoypad games and {counts['GAMEBUINO']} Gamebuino games. See [all games and controls](INSTALLED_GAMES.md).
+Includes {counts['TINYGAME']} TinyJoypad games, {counts['GAME']} selected PicoPad games, {counts['CRISP']} Crisp games, {counts['POCKET']} Pocket Gamer games, {counts['ORIGINAL']} original PicoConsole games, {counts['TINYEXTRA']} additional TinyJoypad games and {counts['GAMEBUINO']} Gamebuino games. See [all games and controls](INSTALLED_GAMES.md).
 
 ## Controls and visibility
 
@@ -38,7 +38,8 @@ Includes {counts['TINYGAME']} TinyJoypad games, {counts['GAME']} selected PicoPa
 - **Y in the menu jumps back to All.** Favorites and history are saved automatically in internal flash, including across restarts. Saves use two alternating checksummed records in the final 8 KB; an interrupted write can fall back to the previous record. Stable game IDs preserve entries when the catalog is reordered or extended. A full flash erase removes these lists; normal UF2 updates stop before the reserved sectors.
 - **Y returns to the menu in every game.**
 - Arkanoid: A/B launches; left/right moves the bottom paddle. Pinball: left/right operates bottom flippers; A/B launches.
-- The menu has one compact header, seven rows, 16-pixel white names, bright selection and white/yellow hints.
+- Each game row has a compressed, tinted background preview derived from a captured game screen. The full playfield keeps its original aspect ratio, accompanied by a foreground close-up; selected per-game frames and viewports avoid title screens and score-only crops. Previews fade toward the text and white names have a black outline. Left/right pages move five games. Favorites and Recent use the same previews.
+- The menu has one compact header, five rows, 16-pixel white names, bright selection and white/yellow hints.
 - Crisp and original games use the whole square screen. Connect Four, Tic Tac Toe, Math and Tetramino have adapted full-screen layouts. 2048 has larger numbers. Some lettering baked into original game art remains small.
 - TinyJoypad Tetromino and Gamebuino Tetrino are rotated with matching controls for upright play. Number Place has an enlarged board and digits. New monochrome games use white pixels and high-contrast shading.
 - The extra DISPLAY / BUTTONS diagnostic is not counted as a game.
@@ -72,9 +73,9 @@ Publish the matching source archive and notices produced by `tools/package_relea
 
 **{len(g)} native games** on a Raspberry Pi Pico 2 with the Waveshare Pico-LCD-1.3 (240×240 LCD, joystick and four buttons). No ROMs or SD card required.
 
-The launcher has large, high-contrast text, seven game rows and hold-to-scroll navigation. Arkanoid and Pinball play upright with left/right controls. Press **Y** to return to the menu.
+The launcher has large, high-contrast text, five game rows and hold-to-scroll navigation. Arkanoid and Pinball play upright with left/right controls. Press **Y** to return to the menu.
 
-In the menu, **B switches All / Favorites / Recent**, **X stars or unstars**, and **A or joystick press plays**. Recent shows the last 20 distinct games, newest first. Favorites and history save automatically across restarts; Y jumps back to All. The compact single-line heading and seven 16-pixel rows remain readable on the tiny screen.
+In the menu, **B switches All / Favorites / Recent**, **X stars or unstars**, and **A or joystick press plays**. Recent shows the last 20 distinct games, newest first. Favorites and history save automatically across restarts; Y jumps back to All. The compact single-line heading and five taller rows with 16-pixel names remain readable on the tiny screen.
 
 - [Game list and controls](docs/INSTALLED_GAMES.md)
 - [Pack details, capacity and verification](docs/NATIVE_PACK.md)

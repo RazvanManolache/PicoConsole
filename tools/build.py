@@ -25,7 +25,7 @@ def main():
     if not compiler or not Path(compiler).is_file():raise SystemExit('ARM GNU arm-none-eabi-gcc is required; use --toolchain /path/to/bin. See docs/BUILD.md.')
     cmake=executable(a.cmake,'cmake');ninja=executable(a.ninja,'ninja')
     sys.path.insert(0,str(ROOT/'tools/python-libs'))
-    try:import elftools
+    try:import elftools,PIL
     except ImportError:
         if a.offline:raise SystemExit('Install tools/requirements.txt before an offline build.')
         run(sys.executable,'-m','pip','install','--target',ROOT/'tools/python-libs','-r',ROOT/'tools/requirements.txt')
@@ -41,7 +41,7 @@ def main():
             dirty=subprocess.check_output(['git','-C',str(path),'status','--porcelain','--untracked-files=no'],text=True)
             assert not dirty,f'{name}: tracked dependency files have changes'
         (ROOT/'tools/native_catalog.json').write_bytes((ROOT/'tools/base_catalog.json').read_bytes())
-        for script in ('prepare_crisp','prepare_pocket','prepare_tiny','prepare_gamebuino','prepare_native','prepare_draw','prepare_linker','audit_release'):
+        for script in ('prepare_crisp','prepare_pocket','prepare_tiny','prepare_gamebuino','prepare_native','prepare_draw','prepare_linker','prepare_previews','audit_release'):
             run(sys.executable,ROOT/'tools'/f'{script}.py')
     else:
         import hashlib

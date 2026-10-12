@@ -16,7 +16,7 @@ try:
     c.command('press DOWN 700');time.sleep(.85)
     held=c.status();assert held['mode']=='menu' and held['selected']>=2,held
     c.command('press RIGHT 100');time.sleep(.2)
-    right=c.status();assert right['selected']==held['selected']+7,right
+    right=c.status();assert right['selected']==held['selected']+5,right
     c.command('press LEFT 100');time.sleep(.2)
     left=c.status();assert left['selected']==held['selected'],left
     c.command('launch 0');time.sleep(.15);c.command('menu');time.sleep(.25)

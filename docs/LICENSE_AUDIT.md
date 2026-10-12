@@ -49,3 +49,7 @@ The upstream collections contain other titles with missing, non-commercial, conf
 - gameSnake5110.c: Upstream records conflicting CC-BY-SA / GPLv3 declarations.
 - other Gamebuino titles: Missing or restrictive source declarations; only the reviewed filename whitelist is prepared.
 - other TinyJoypad titles: Existing duplicates or missing/restrictive source declarations; only reviewed additions are prepared.
+
+## Menu artwork in 0.6
+
+Every catalog game has an editable monochrome PNG derived from its own rendered graphics. Per-game component terms and notices continue to apply. PNGs, provenance, selected viewports, and hashes are included in the matching source bundle. Artwork files are whitelisted against the catalog and checked for dimensions and identity. Sokoban and Fifteen2 previews are captured from the current curated replacement sources, with source hashes checked; no removed puzzle sets or picture assets are reintroduced.

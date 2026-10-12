@@ -16,14 +16,14 @@ def main():
  def add(path):
   path=Path(path)
   if path.is_file():selected.add(path.resolve())
- for d in ('firmware','LICENSES'):
+ for d in ('firmware','LICENSES','assets/menu-previews'):
   for path in (ROOT/d).rglob('*'):add(path)
  for name in ('README.md','LICENSE','COPYING.txt','THIRD_PARTY_NOTICES.md','dependencies.lock.json'):
   add(ROOT/name)
  for name in ('BUILD.md','NATIVE_PACK.md','INSTALLED_GAMES.md','LICENSE_AUDIT.md','HARDWARE.md'):add(ROOT/'docs'/name)
  for name in ('build.py','build.ps1','requirements.txt','audit_release.py','asset-policy.json','base_catalog.json','native_catalog.json','prepare_native.py','prepare_crisp.py','prepare_pocket.py','prepare_draw.py','prepare_linker.py','generate_puzzles.py','compress_levels.py','make_uf2.py','record_build.py','write_pack_docs.py','package_release.py','console_usb.py','smoke_catalog.py','check_final_play.py','check_menu.py'):add(ROOT/'tools'/name)
  for name in ('prepare_tiny.py','prepare_gamebuino.py','tiny-games.json','gamebuino-games.json','tiny-licences.json','gamebuino-licences.json','extra-exclusions.json','check_tiny_host.py'):add(ROOT/'tools'/name)
- for name in ('check_library.cpp','check_library_host.py'):add(ROOT/'tools'/name)
+ for name in ('check_library.cpp','check_library_host.py','prepare_previews.py','preview-framing.json','capture_native_previews.py','capture_extra_previews.py'):add(ROOT/'tools'/name)
  # Exact compiler dependencies provide all headers and assembly includes.
  deps=subprocess.check_output([a.ninja,'-C',str(build),'-t','deps'],text=True)
  sdk=(ROOT/'upstream/pico-sdk').resolve();tiny=sdk/'lib/tinyusb'
@@ -75,6 +75,8 @@ def main():
  assert all(m['source_sha256'].get(k)==v for k,v in library['source_sha256'].items()),'Library-tested source differs'
  assert all(sha(ROOT/k)==v for k,v in library['test_source_sha256'].items()),'Library tests changed since running'
  shutil.copyfile(ROOT/'logs/library-host/report.json',out/'library-desktop-checks.json')
+ for view in ('all','favorites','recent'):
+  shutil.copyfile(ROOT/'logs/library-host'/(view+'.png'),out/('menu-'+view+'.png'))
  verification='Required before publishing: extract and run build.py --prepared; record its UF2 hash.'
  if a.verified_rebuild:
   digest=sha(a.verified_rebuild)

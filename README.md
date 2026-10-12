@@ -2,9 +2,9 @@
 
 **366 native games** on a Raspberry Pi Pico 2 with the Waveshare Pico-LCD-1.3 (240×240 LCD, joystick and four buttons). No ROMs or SD card required.
 
-The launcher has large, high-contrast text, seven game rows and hold-to-scroll navigation. Arkanoid and Pinball play upright with left/right controls. Press **Y** to return to the menu.
+The launcher has large, high-contrast text, five game rows and hold-to-scroll navigation. Arkanoid and Pinball play upright with left/right controls. Press **Y** to return to the menu.
 
-In the menu, **B switches All / Favorites / Recent**, **X stars or unstars**, and **A or joystick press plays**. Recent shows the last 20 distinct games, newest first. Favorites and history save automatically across restarts; Y jumps back to All. The compact single-line heading and seven 16-pixel rows remain readable on the tiny screen.
+In the menu, **B switches All / Favorites / Recent**, **X stars or unstars**, and **A or joystick press plays**. Recent shows the last 20 distinct games, newest first. Favorites and history save automatically across restarts; Y jumps back to All. The compact single-line heading and five taller rows with 16-pixel names remain readable on the tiny screen.
 
 - [Game list and controls](docs/INSTALLED_GAMES.md)
 - [Pack details, capacity and verification](docs/NATIVE_PACK.md)

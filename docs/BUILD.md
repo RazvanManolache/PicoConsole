@@ -10,7 +10,7 @@ From a clone, run:
 python tools/build.py
 ```
 
-The build initialises the four Git submodules and only the Pico SDK's required TinyUSB submodule. It verifies revisions against `dependencies.lock.json`, rejects tracked changes inside dependencies, installs pinned helper packages into ignored `tools/python-libs` if needed, generates curated game copies and builds the UF2. It never flashes hardware.
+The build initialises the six Git submodules and only the Pico SDK's required TinyUSB submodule. It verifies revisions against `dependencies.lock.json`, rejects tracked changes inside dependencies, installs pinned helper packages into ignored `tools/python-libs` if needed, generates curated game copies and builds the UF2. It never flashes hardware.
 
 Windows wrapper:
 
@@ -38,7 +38,7 @@ Hold BOOTSEL while plugging in the board. Verify `INFO_UF2.TXT` identifies **RP2
 python tools/package_release.py --build-dir build --ninja /path/to/ninja
 ```
 
-Upload the resulting UF2, source ZIP, notices ZIP and release manifest from `dist/releases/0.5/` together. The source ZIP contains prepared, human-readable modified game sources, build scripts, licence texts, dependency revision records and the SDK/TinyUSB source/header/configuration files required for this build. It omits unrelated upstream games, all imported Sokoban levels, picture puzzles, ROMs, unused vendor ports and compiler binaries.
+Upload the resulting UF2, source ZIP, notices ZIP and release manifest from `dist/releases/0.6/` together. The source ZIP contains prepared, human-readable modified game sources, build scripts, licence texts, dependency revision records and the SDK/TinyUSB source/header/configuration files required for this build. It omits unrelated upstream games, all imported Sokoban levels, picture puzzles, ROMs, unused vendor ports and compiler binaries.
 
 Extract the source ZIP and run:
 
@@ -52,7 +52,12 @@ GitHub's automatic source ZIP does **not** contain submodule source. Publish the
 
 The build normalises embedded project paths to support matching UF2 output from different checkout directories with the same toolchain. Rebuilding with another compiler may produce a different binary. Hardware tests record the UF2 hash they exercised and are separate from a successful build.
 
-Favorites/history occupy the last two 4 KB flash sectors (offsets `0x3fe000` and `0x3ff000`). The linker reserves these sectors and UF2 validation rejects payloads reaching them. Normal 0.5 updates preserve this space; a full flash erase removes the saved lists. The save path uses `flash_safe_execute` on this single-core firmware; launching core 1 later requires revisiting the `PICO_FLASH_ASSUME_CORE1_SAFE` configuration.
+Menu artwork sources are in `assets/menu-previews`. Normal builds losslessly pack
+the editable PNGs with `tools/prepare_previews.py`; development captures are not
+required. Per-game framing and capture choices are in `tools/preview-framing.json`.
+The release source archive includes the PNGs, their provenance and the packer.
+
+Favorites/history occupy the last two 4 KB flash sectors (offsets `0x3fe000` and `0x3ff000`). The linker reserves these sectors and UF2 validation rejects payloads reaching them. Normal updates from 0.5 onward preserve this space; a full flash erase removes the saved lists. The save path uses `flash_safe_execute` on this single-core firmware; launching core 1 later requires revisiting the `PICO_FLASH_ASSUME_CORE1_SAFE` configuration.
 
 Desktop library checks: `python tools/check_library_host.py --gxx /path/to/native/g++`. They exercise catalog migration, empty lists, favorites, recent ordering, checksums, partial writes and the shared renderer. They simulate flash; actual Pico save/reload still needs a hardware check. On the device, star games with X, check the Favorites view using B, play several from Recent, return using Y, then power-cycle and confirm both lists survived.
 

@@ -25,10 +25,10 @@ for i in range(count):
     expected=binary_data[i*256:(i+1)*256].ljust(256,b'\0')
     assert block[32:288]==expected
 sources={str(p.relative_to(ROOT)).replace('\\','/'):sha(p)
-         for p in sorted((ROOT/'firmware').rglob('*')) if p.is_file()}
+         for folder in ('firmware','assets/menu-previews') for p in sorted((ROOT/folder).rglob('*')) if p.is_file()}
 report={
     'recorded_utc':datetime.now(timezone.utc).isoformat(),
-    'firmware':'native-0.5','board':'pico2','platform':'rp2350-arm-s',
+    'firmware':'native-0.6','board':'pico2','platform':'rp2350-arm-s',
     'system_clock_hz':150000000,'flash_limit_bytes':4194304,
     'binary_flash_bytes':binary.stat().st_size,'uf2_blocks':count,
     'library_profile_bytes':8192,'firmware_flash_limit_bytes':4194304-8192,

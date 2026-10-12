@@ -1,6 +1,6 @@
 # Component notices and modifications
 
-PicoConsole Super Pack 0.5 combines GPLv3 programs with GPL-compatible permissive components. The combined firmware is distributed under GNU GPL version 3; original component licences and notices are retained. This document does not relicense unrelated files in upstream repositories.
+PicoConsole Super Pack 0.6 combines GPLv3 programs with GPL-compatible permissive components. The combined firmware is distributed under GNU GPL version 3; original component licences and notices are retained. This document does not relicense unrelated files in upstream repositories.
 
 | Component | Authors / source | Licence text |
 |---|---|---|
@@ -40,6 +40,14 @@ Tiny additions retain MIT notices for obono, datacute, Winston Lu and Lorandil, 
 Gamebuino games retain MIT, GPLv3, LGPLv3 and Unlicense notices in LICENSES/Gamebuino-*.txt and prepared source. The Gamebuino compatibility API and fonts derive from Aurelien Rodot (copyright 2014), LGPLv3-or-later; its declaration and full LGPL text accompany the source. Firebuino is LGPLv3. Tetrino includes MIT code by Laurens Rodriguez Oscanoa (2011/2013) and Joffrey Carlier (2014). Dark Tower is GPLv3-or-later by Marcus Hutchings (2018).
 
 PicoConsole changes: standalone C backends replace SDL, RAM-only EEPROM, audio stubs, constant tables in flash, shared game RAM, square-screen scaling, white text, upright falling-block controls/rendering and enlarged Number Place digits. All modified files are marked with the modification date. Desktop checks do not replace Pico hardware validation.
+
+## Menu previews in 0.6, 2026-10-12
+
+Five taller menu rows include compressed monochrome derivatives of the curated
+games' own rendered graphics. The editable PNG artwork and provenance are in
+assets/menu-previews; the corresponding game component licences and notices
+continue to apply. No separate cover art or excluded games/assets were imported.
+PicoConsole framing, compression and menu-rendering changes are GPLv3-or-later.
 
 ## Launcher additions in 0.5, 2026-10-12
 
