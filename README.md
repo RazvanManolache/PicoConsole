@@ -3,8 +3,9 @@
 **Small console. Big "just one more game" energy.**
 
 This is a personal project I'm building for my kids: a tiny handheld they can
-pick up, choose a game, and pass around. A Raspberry Pi Pico 2, a little screen,
-a joystick, and four buttons. A pocket-sized excuse to say, "My turn!"
+pick up, choose a game, and pass around. A Raspberry Pi Pico 2 with a
+**Waveshare Pico-LCD-1.3** screen (**1.3-inch, 240 × 240 IPS**), a joystick,
+and four buttons. A pocket-sized excuse to say, "My turn!"
 
 The current **0.6 pack bundles 366 native games** into the Pico's internal flash.
 Squeezing them into 4 MB has become a game of its own. Adults may occasionally
