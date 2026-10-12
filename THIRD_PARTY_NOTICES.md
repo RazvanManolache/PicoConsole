@@ -1,6 +1,6 @@
 # Component notices and modifications
 
-PicoConsole Super Pack 0.4 combines GPLv3 programs with GPL-compatible permissive components. The combined firmware is distributed under GNU GPL version 3; original component licences and notices are retained. This document does not relicense unrelated files in upstream repositories.
+PicoConsole Super Pack 0.5 combines GPLv3 programs with GPL-compatible permissive components. The combined firmware is distributed under GNU GPL version 3; original component licences and notices are retained. This document does not relicense unrelated files in upstream repositories.
 
 | Component | Authors / source | Licence text |
 |---|---|---|
@@ -40,3 +40,7 @@ Tiny additions retain MIT notices for obono, datacute, Winston Lu and Lorandil, 
 Gamebuino games retain MIT, GPLv3, LGPLv3 and Unlicense notices in LICENSES/Gamebuino-*.txt and prepared source. The Gamebuino compatibility API and fonts derive from Aurelien Rodot (copyright 2014), LGPLv3-or-later; its declaration and full LGPL text accompany the source. Firebuino is LGPLv3. Tetrino includes MIT code by Laurens Rodriguez Oscanoa (2011/2013) and Joffrey Carlier (2014). Dark Tower is GPLv3-or-later by Marcus Hutchings (2018).
 
 PicoConsole changes: standalone C backends replace SDL, RAM-only EEPROM, audio stubs, constant tables in flash, shared game RAM, square-screen scaling, white text, upright falling-block controls/rendering and enlarged Number Place digits. All modified files are marked with the modification date. Desktop checks do not replace Pico hardware validation.
+
+## Launcher additions in 0.5, 2026-10-12
+
+Original PicoConsole library navigation, Favorites and Recent views, stable game identifiers, checksummed alternating flash records, and shared menu renderer are GPLv3-or-later. The final 8 KB of flash is reserved for the launcher profile. Game score/EEPROM backends remain unchanged. Native checks simulate interrupted saves and render the same menu code; physical flash and controls require separate Pico validation.

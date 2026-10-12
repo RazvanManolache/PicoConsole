@@ -5,6 +5,9 @@ root=Path(__file__).resolve().parents[1]
 g=json.loads((root/'tools/native_catalog.json').read_text());m=json.loads((root/'dist/build-manifest.json').read_text())
 counts=collections.Counter(x['group'] for x in g)
 verification=[]
+lp=root/'logs/library-host/report.json';lr=json.loads(lp.read_text()) if lp.exists() else {}
+if lr.get('result')=='passed' and all(m['source_sha256'].get(k)==v for k,v in lr.get('source_sha256',{}).items()):
+ verification.append('Passed desktop library navigation, save/reload, catalog migration, interrupted-save recovery and shared menu rendering checks. Pico flash persistence and button navigation remain pending.')
 for collection in ('tiny','gamebuino'):
  p=root/'logs'/(collection+'-host')/'report.json';r=json.loads(p.read_text()) if p.exists() else {}
  same=r.get('result')=='passed' and all(m['source_sha256'].get(k)==v for k,v in r.get('source_sha256',{}).items())
@@ -22,7 +25,7 @@ for i,x in enumerate(g,1):
  lines.append(f"| {i} | {x['title']} | {x['group']} | {c} |")
 lines+=['','**Y returns to the menu in every game.** Two-player games share the device in turns. Full playthroughs have not been performed.','']
 (root/'docs/INSTALLED_GAMES.md').write_text('\n'.join(lines))
-(root/'docs/NATIVE_PACK.md').write_text(f'''# Curated native pack 0.4
+(root/'docs/NATIVE_PACK.md').write_text(f'''# Curated native pack 0.5
 
 **{len(g)} native games** for Pico 2 and Waveshare Pico-LCD-1.3, with no ROMs, microSD or speaker required.
 
@@ -31,6 +34,8 @@ Includes {counts['TINYGAME']} TinyJoypad games, {counts['GAME']} selected PicoPa
 ## Controls and visibility
 
 - Menu: up/down selects, hold to scroll, left/right changes page, A or joystick press opens.
+- **B switches All / Favorites / Recent. X stars or unstars the selected game.** Favorites have a gold star. Recent keeps the last 20 distinct games, newest first; replaying a game moves it to the top. Each view remembers its navigation position while powered on. Empty views explain how to populate them.
+- **Y in the menu jumps back to All.** Favorites and history are saved automatically in internal flash, including across restarts. Saves use two alternating checksummed records in the final 8 KB; an interrupted write can fall back to the previous record. Stable game IDs preserve entries when the catalog is reordered or extended. A full flash erase removes these lists; normal UF2 updates stop before the reserved sectors.
 - **Y returns to the menu in every game.**
 - Arkanoid: A/B launches; left/right moves the bottom paddle. Pinball: left/right operates bottom flippers; A/B launches.
 - The menu has one compact header, seven rows, 16-pixel white names, bright selection and white/yellow hints.
@@ -41,6 +46,8 @@ Includes {counts['TINYGAME']} TinyJoypad games, {counts['GAME']} selected PicoPa
 ## Capacity
 
 Flash: **{m['binary_flash_bytes']:,} / 4,194,304 bytes ({m['binary_flash_bytes']/4194304*100:.2f}%)**, leaving **{4194304-m['binary_flash_bytes']:,} bytes**. UF2 container size is larger than the flash image. Only additions with reviewed compatible terms and working desktop checks are included.
+
+The library profile reserves **8,192 bytes** of that remainder; **{4194304-8192-m['binary_flash_bytes']:,} bytes** remain available for firmware growth. The linker and UF2 payload checks enforce this boundary.
 
 Static RAM: {m['ram']['static_ram_bytes']:,} bytes; shared game area: {m['ram']['shared_game_ram_bytes']:,} bytes; stack: {m['ram']['stack_reserved_bytes']:,} bytes; heap capacity before allocation: {m['ram']['heap_capacity_bytes']:,} bytes. Only one game runs at a time. Linker/ELF checks verify that overlapping game sections do not overlap core state.
 
@@ -66,6 +73,8 @@ Publish the matching source archive and notices produced by `tools/package_relea
 **{len(g)} native games** on a Raspberry Pi Pico 2 with the Waveshare Pico-LCD-1.3 (240×240 LCD, joystick and four buttons). No ROMs or SD card required.
 
 The launcher has large, high-contrast text, seven game rows and hold-to-scroll navigation. Arkanoid and Pinball play upright with left/right controls. Press **Y** to return to the menu.
+
+In the menu, **B switches All / Favorites / Recent**, **X stars or unstars**, and **A or joystick press plays**. Recent shows the last 20 distinct games, newest first. Favorites and history save automatically across restarts; Y jumps back to All. The compact single-line heading and seven 16-pixel rows remain readable on the tiny screen.
 
 - [Game list and controls](docs/INSTALLED_GAMES.md)
 - [Pack details, capacity and verification](docs/NATIVE_PACK.md)

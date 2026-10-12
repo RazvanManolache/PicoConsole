@@ -13,6 +13,7 @@ binary=BUILD/'pico_console.bin'
 uf2=ROOT/'dist/pico_console.uf2'
 blocks=uf2.read_bytes()
 binary_data=binary.read_bytes()
+assert (len(binary_data)+255)//256*256<=4194304-8192,'Firmware reaches the saved library sectors'
 assert len(blocks)%512==0
 count=len(blocks)//512
 for i in range(count):
@@ -27,9 +28,10 @@ sources={str(p.relative_to(ROOT)).replace('\\','/'):sha(p)
          for p in sorted((ROOT/'firmware').rglob('*')) if p.is_file()}
 report={
     'recorded_utc':datetime.now(timezone.utc).isoformat(),
-    'firmware':'native-0.4','board':'pico2','platform':'rp2350-arm-s',
+    'firmware':'native-0.5','board':'pico2','platform':'rp2350-arm-s',
     'system_clock_hz':150000000,'flash_limit_bytes':4194304,
     'binary_flash_bytes':binary.stat().st_size,'uf2_blocks':count,
+    'library_profile_bytes':8192,'firmware_flash_limit_bytes':4194304-8192,
     'binary_sha256':sha(binary),'uf2_sha256':sha(uf2),
     'pico_sdk_commit':rev(ROOT/'upstream/pico-sdk'),
     'tinyusb_commit':rev(ROOT/'upstream/pico-sdk/lib/tinyusb'),

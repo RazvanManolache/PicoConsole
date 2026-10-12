@@ -12,6 +12,7 @@ for name in ['final-smoke','final-play']:
 c=Console()
 try:
     c.command('launch 0');time.sleep(.15);c.command('menu');time.sleep(.25)
+    c.command('press Y 100');time.sleep(.2) # Ensure All, regardless of remembered view.
     c.command('press DOWN 700');time.sleep(.85)
     held=c.status();assert held['mode']=='menu' and held['selected']>=2,held
     c.command('press RIGHT 100');time.sleep(.2)
@@ -19,6 +20,7 @@ try:
     c.command('press LEFT 100');time.sleep(.2)
     left=c.status();assert left['selected']==held['selected'],left
     c.command('launch 0');time.sleep(.15);c.command('menu');time.sleep(.25)
+    c.command('press Y 100');time.sleep(.2)
     ready=c.status();assert ready['mode']=='menu' and ready['selected']==0,ready
     c.shot(root/'logs/final-play/menu.png')
     (root/'logs/menu-check.json').write_text(json.dumps(dict(result='passed',uf2_sha256=manifest['uf2_sha256'],hold=held,right=right,left=left,ready=ready),indent=2)+'\n')

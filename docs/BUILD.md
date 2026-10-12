@@ -38,7 +38,7 @@ Hold BOOTSEL while plugging in the board. Verify `INFO_UF2.TXT` identifies **RP2
 python tools/package_release.py --build-dir build --ninja /path/to/ninja
 ```
 
-Upload the resulting UF2, source ZIP, notices ZIP and release manifest from `dist/releases/0.4/` together. The source ZIP contains prepared, human-readable modified game sources, build scripts, licence texts, dependency revision records and the SDK/TinyUSB source/header/configuration files required for this build. It omits unrelated upstream games, all imported Sokoban levels, picture puzzles, ROMs, unused vendor ports and compiler binaries.
+Upload the resulting UF2, source ZIP, notices ZIP and release manifest from `dist/releases/0.5/` together. The source ZIP contains prepared, human-readable modified game sources, build scripts, licence texts, dependency revision records and the SDK/TinyUSB source/header/configuration files required for this build. It omits unrelated upstream games, all imported Sokoban levels, picture puzzles, ROMs, unused vendor ports and compiler binaries.
 
 Extract the source ZIP and run:
 
@@ -51,5 +51,9 @@ This path uses the included prepared sources and requires no Git checkout or sou
 GitHub's automatic source ZIP does **not** contain submodule source. Publish the generated source bundle alongside each binary and retain the matching release tag. Submodules identify exact revisions; they do not remove your responsibility to provide corresponding source. See the [GPL FAQ on matching source](https://www.gnu.org/licenses/gpl-faq.en.html#DistributeExtendedBinary).
 
 The build normalises embedded project paths to support matching UF2 output from different checkout directories with the same toolchain. Rebuilding with another compiler may produce a different binary. Hardware tests record the UF2 hash they exercised and are separate from a successful build.
+
+Favorites/history occupy the last two 4 KB flash sectors (offsets `0x3fe000` and `0x3ff000`). The linker reserves these sectors and UF2 validation rejects payloads reaching them. Normal 0.5 updates preserve this space; a full flash erase removes the saved lists. The save path uses `flash_safe_execute` on this single-core firmware; launching core 1 later requires revisiting the `PICO_FLASH_ASSUME_CORE1_SAFE` configuration.
+
+Desktop library checks: `python tools/check_library_host.py --gxx /path/to/native/g++`. They exercise catalog migration, empty lists, favorites, recent ordering, checksums, partial writes and the shared renderer. They simulate flash; actual Pico save/reload still needs a hardware check. On the device, star games with X, check the Favorites view using B, play several from Recent, return using Y, then power-cycle and confirm both lists survived.
 
 After rebuilding the extracted archive, record a successful byte-for-byte comparison by running the packager in the original checkout with `--verified-rebuild /path/to/extracted/dist/pico_console.uf2` and the same `--build-dir` and `--ninja` options. The packager refuses a mismatching UF2. Release 0.3 was checked this way with an offline, isolated source-archive build using GCC 14.2.1.

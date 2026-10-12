@@ -5,6 +5,8 @@
 #include "hardware/pwm.h"
 #include "pico/stdio_usb.h"
 #include "pico/bootrom.h"
+#include "library_flash.h"
+#include "library_screen.h"
 #include <algorithm>
 #include <iterator>
 
@@ -20,12 +22,22 @@ struct GameSpec { const char* title; void (*run)(); bool tiny; int full; int rot
 static const GameSpec games[]={
 #include "games/registry.inc"
 };
+static const uint32_t game_keys[]={
+#include "games/menu_keys.inc"
+};
+static_assert(GAME_COUNT<=library::max_games);
+static_assert(sizeof(game_keys)/sizeof(*game_keys)==GAME_COUNT);
+static library::Menu game_library(game_keys,GAME_COUNT);
+static bool profile_dirty=false,save_failed=false;
+static void save_profile() {
+    if(profile_dirty){save_failed=!library_save(game_library);profile_dirty=save_failed;}
+}
 static bool rotated=false;
 static int game_level=1,game_lives=3;
 void console_set_rotated(bool enabled) { rotated=enabled; }
 void console_stats(int level,int lives) { game_level=level; game_lives=lives; }
 static const u16 BG=0x0863, WHITE=0xffff, MUTED=0xffff, CYAN=0x07ff, GOLD=0xfda0;
-static int active=-1, pending=-1, selected=0;
+static int active=-1, pending=-1;
 static bool quitting=false, in_service=false;
 static uint32_t virtual_keys=0, virtual_until=0, seen=0, frames=0, menu_returns=0;
 static uint32_t raw_keys=0, stable_keys=0, last_raw=0, change_at=0;
@@ -132,9 +144,10 @@ static void emit_shot() {
     fflush(stdout); puts("\nEND_FRAME");
 }
 static void send_status() {
-    printf("{\"version\":\"native-0.4\",\"mode\":\"%s\",\"game\":%d,\"frames\":%lu,\"returns\":%lu,\"keys\":%lu,\"seen_physical\":%lu,\"uptime_ms\":%lu,\"count\":%d,\"selected\":%d,\"rotated\":%d}\n",
+    printf("{\"version\":\"native-0.5\",\"mode\":\"%s\",\"game\":%d,\"frames\":%lu,\"returns\":%lu,\"keys\":%lu,\"seen_physical\":%lu,\"uptime_ms\":%lu,\"count\":%d,\"selected\":%d,\"rotated\":%d,\"view\":\"%s\",\"view_row\":%d,\"favorites\":%d,\"recent\":%d,\"save_failed\":%d}\n",
         active==-1?"menu":active==-2?"diagnostic":"game",active,
-        (unsigned long)frames,(unsigned long)menu_returns,(unsigned long)read_keys(),(unsigned long)seen,(unsigned long)now_ms(),GAME_COUNT,selected,rotated);
+        (unsigned long)frames,(unsigned long)menu_returns,(unsigned long)read_keys(),(unsigned long)seen,(unsigned long)now_ms(),GAME_COUNT,game_library.selected(),rotated,
+        game_library.view_name(),game_library.cursor(),game_library.favorite_count(),game_library.recent_count(),save_failed);
 }
 static void dispatch(const char* line) {
     if (!strcmp(line,"status")) send_status();
@@ -158,7 +171,7 @@ static void dispatch(const char* line) {
         if(active>=0 && now_ms()-last_present_ms<200) { shot_pending=true;shot_requested_ms=now_ms(); }
         else emit_shot();
     } else if (!strcmp(line,"boot")) { puts("OK boot"); stdio_flush(); reset_usb_boot(0,0); }
-    else puts("ERROR commands: status, launch 0..2, menu, press KEY ms, shot, boot");
+    else puts("ERROR commands: status, launch INDEX, list, menu, press KEY ms, shot, boot");
 }
 void console_service() {
     if (in_service) return;
@@ -209,18 +222,9 @@ void WaitUs(uint32_t us) {
 }
 void DispUpdate() { console_service(); present(true); }
 
+static const char* game_title(int index) { return games[index].title; }
 static void draw_menu() {
-    std::fill(std::begin(FrameBuf),std::end(FrameBuf),BG);
-    char label[32]; snprintf(label,sizeof(label),"%d GAMES  %d/%d",GAME_COUNT,selected+1,GAME_COUNT+1);
-    text(FrameBuf,WIDTH,8,4,label,CYAN);
-    int top=(selected/7)*7;
-    for (int row=0;row<7 && top+row<=GAME_COUNT;++row) {
-        int i=top+row,y=30+row*24;
-        fill(FrameBuf,WIDTH,6,y,228,23,i==selected?0x2253:0x10a5);
-        text(FrameBuf,WIDTH,8,y+4,i==selected?">":" ",CYAN);
-        text(FrameBuf,WIDTH,24,y+4,i==GAME_COUNT?"DISPLAY / BUTTONS":games[i].title,WHITE);
-    }
-    text(FrameBuf,WIDTH,8,218,"L/R PAGE  A PLAY",GOLD);
+    library::draw_menu(FrameBuf,WIDTH,FontCond6x8,game_library,game_title,save_failed);
     present(false);
 }
 static void diagnostics() {
@@ -249,6 +253,7 @@ static void diagnostics() {
 }
 int main() {
     stdio_init_all(); stdio_set_translate_crlf(&stdio_usb,false);
+    library_load(game_library);
     for (int pin:pins) { gpio_init(pin); gpio_set_dir(pin,GPIO_IN); gpio_pull_up(pin); }
     lcd_init();
     uint32_t old=0,menu_repeat=0;
@@ -260,23 +265,29 @@ int main() {
         if(stable_keys!=old)menu_repeat=now_ms()+350;
         else if((stable_keys&15u) && int32_t(now_ms()-menu_repeat)>=0) { pressed|=stable_keys&15u;menu_repeat=now_ms()+100; }
         old=stable_keys;
-        if (pressed&1u) { selected=(selected+GAME_COUNT)%(GAME_COUNT+1); draw_menu(); }
-        if (pressed&2u) { selected=(selected+1)%(GAME_COUNT+1); draw_menu(); }
-        if (pressed&4u) { selected=(selected+GAME_COUNT+1-7)%(GAME_COUNT+1); draw_menu(); }
-        if (pressed&8u) { selected=(selected+7)%(GAME_COUNT+1); draw_menu(); }
-        if (pressed&((1u<<4)|(1u<<5))) pending=selected;
+        bool redraw=false;
+        if(pressed&1u){game_library.move(-1);redraw=true;}
+        if(pressed&2u){game_library.move(1);redraw=true;}
+        if(pressed&4u){game_library.move(-7);redraw=true;}
+        if(pressed&8u){game_library.move(7);redraw=true;}
+        if(pressed&(1u<<6)){game_library.cycle();redraw=true;}
+        if(pressed&(1u<<8)){game_library.all();redraw=true;}
+        if(pressed&(1u<<7)){profile_dirty|=game_library.toggle();save_profile();redraw=true;}
+        if(redraw)draw_menu();
+        if(pressed&((1u<<4)|(1u<<5)))pending=game_library.selected();
         if (pending>=0) {
-            selected=pending; pending=-1;
+            int launching=pending;pending=-1;game_library.focus(launching);
             // Consume the selection press, so it cannot skip the game's intro.
             while (read_keys()) { console_service(); sleep_ms(5); }
             stable_keys=last_raw=raw_keys=old=0;
             quitting=false;
+            profile_dirty|=game_library.played(launching);save_profile();
             std::fill(std::begin(FrameBuf),std::end(FrameBuf),0);
             rotated=false;
             extern uint8_t __game_ram_start, __game_ram_end;
             memset(&__game_ram_start,0,&__game_ram_end-&__game_ram_start);
             SelFont8x16(); KeyFlush();
-            active=selected==GAME_COUNT?-2:selected;
+            active=launching==GAME_COUNT?-2:launching;
             try {
                 if(active>=0) games[active].run();
                 else diagnostics();

@@ -23,6 +23,7 @@ def main():
  for name in ('BUILD.md','NATIVE_PACK.md','INSTALLED_GAMES.md','LICENSE_AUDIT.md','HARDWARE.md'):add(ROOT/'docs'/name)
  for name in ('build.py','build.ps1','requirements.txt','audit_release.py','asset-policy.json','base_catalog.json','native_catalog.json','prepare_native.py','prepare_crisp.py','prepare_pocket.py','prepare_draw.py','prepare_linker.py','generate_puzzles.py','compress_levels.py','make_uf2.py','record_build.py','write_pack_docs.py','package_release.py','console_usb.py','smoke_catalog.py','check_final_play.py','check_menu.py'):add(ROOT/'tools'/name)
  for name in ('prepare_tiny.py','prepare_gamebuino.py','tiny-games.json','gamebuino-games.json','tiny-licences.json','gamebuino-licences.json','extra-exclusions.json','check_tiny_host.py'):add(ROOT/'tools'/name)
+ for name in ('check_library.cpp','check_library_host.py'):add(ROOT/'tools'/name)
  # Exact compiler dependencies provide all headers and assembly includes.
  deps=subprocess.check_output([a.ninja,'-C',str(build),'-t','deps'],text=True)
  sdk=(ROOT/'upstream/pico-sdk').resolve();tiny=sdk/'lib/tinyusb'
@@ -69,12 +70,17 @@ def main():
   assert all(m['source_sha256'].get(k)==v for k,v in host['source_sha256'].items()),'Host-tested source differs'
   shutil.copyfile(ROOT/'logs'/(collection+'-host')/'report.json',out/(collection+'-desktop-checks.json'))
   host_checks[collection]=len(host['checks'])
+ library=json.loads((ROOT/'logs/library-host/report.json').read_text())
+ assert library['result']=='passed'
+ assert all(m['source_sha256'].get(k)==v for k,v in library['source_sha256'].items()),'Library-tested source differs'
+ assert all(sha(ROOT/k)==v for k,v in library['test_source_sha256'].items()),'Library tests changed since running'
+ shutil.copyfile(ROOT/'logs/library-host/report.json',out/'library-desktop-checks.json')
  verification='Required before publishing: extract and run build.py --prepared; record its UF2 hash.'
  if a.verified_rebuild:
   digest=sha(a.verified_rebuild)
   assert digest==m['uf2_sha256'],'Source rebuild differs from release UF2'
   verification={'passed':True,'method':'Extracted prepared source; offline build with the recorded compiler; byte-identical UF2','uf2_sha256':digest}
- report={'game_count':m['game_count'],'uf2_sha256':m['uf2_sha256'],'source_files':len(files),'source_zip_sha256':sha(source),'source_rebuild_verification':verification,'desktop_checks':host_checks,'hardware_validation':'Pending: Pico disconnected. Earlier 0.3 device checks do not validate this image.'}
+ report={'game_count':m['game_count'],'uf2_sha256':m['uf2_sha256'],'source_files':len(files),'source_zip_sha256':sha(source),'source_rebuild_verification':verification,'desktop_checks':host_checks,'library_checks':library['summary'],'hardware_validation':'Pending: Pico disconnected. Earlier device checks do not validate this image.'}
  (out/'release-manifest.json').write_text(json.dumps(report,indent=2)+'\n')
  print(json.dumps(report,indent=2))
 

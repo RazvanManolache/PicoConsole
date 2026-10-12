@@ -132,6 +132,13 @@ registry+='\nconstexpr int GAME_COUNT='+str(len(catalog))+';\n'
 (ROOT/'firmware/games/registry.h').write_text(registry)
 table='\n'.join('{'+json.dumps(g['title'])+', '+g['id']+'::run, '+str(int(g['group'] in ('TINYGAME','TINYEXTRA')))+', '+str(2 if g['id']=='pocket_3' else int(g['group'] in ('CRISP','ORIGINAL','TINYEXTRA','GAMEBUINO') or g['id'] in ('pocket_9','pocket_7','pocket_8','pocket_1','pocket_2','pocket_4','pocket_5')))+', '+str(g.get('rotate',0))+', "'+g['controls']+'"},' for g in catalog)
 (ROOT/'firmware/games/registry.inc').write_text(table+'\n')
+def stable_key(s):
+    h=2166136261
+    for byte in s.encode('utf-8'):h=((h^byte)*16777619)&0xffffffff
+    return h
+keys=[stable_key(g['id']) for g in catalog]
+assert len(set(keys))==len(keys) and len(keys)<=512,'Saved library game IDs must be unique'
+(ROOT/'firmware/games/menu_keys.inc').write_text('// Stable IDs for saved favorites/history. GPL-3.0-or-later.\n'+''.join(f'0x{k:08x}u, // {g["id"]}\n' for k,g in zip(keys,catalog)))
 cmake='set(NATIVE_GAME_SOURCES\n'+'\n'.join('  '+p for g in catalog for p in g['sources'])+'\n)\n'
 (ROOT/'firmware/games/sources.cmake').write_text(cmake)
 print(f'Prepared {len(catalog)} native games; retained source notices/licences.')
