@@ -1,0 +1,28 @@
+{
+  "projection": "orthographic; objects share one scene and scale within each view",
+  "console_body_mm": [
+    64,
+    34,
+    22.8
+  ],
+  "console_with_cap_mm": [
+    64,
+    34,
+    27.5
+  ],
+  "id1_card_mm": [
+    85.6,
+    53.98,
+    0.76
+  ],
+  "euro1_outer_mm": [
+    23.25,
+    2.33
+  ],
+  "aa_max_outer_mm": [
+    50.5,
+    14.5
+  ],
+  "reference_shapes": "simplified, original generic models",
+  "hardware_fit_verified": false
+}

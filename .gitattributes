@@ -7,6 +7,11 @@
 *.md text eol=lf
 *.ps1 text eol=lf
 *.txt text eol=lf
+*.scad text eol=lf
+hardware/enclosure/LICENSE text eol=lf
+*.stl binary
+*.3mf binary
+*.blend binary
 .gitmodules text eol=lf
 # Preserve upstream licence formatting without treating it as code whitespace.
 LICENSES/** -whitespace

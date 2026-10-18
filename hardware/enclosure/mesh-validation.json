@@ -1,0 +1,297 @@
+{
+  "prototype": true,
+  "hardware_fit": "not physically verified",
+  "source_sha256": "3cc05a222d38d9922e3d512826b930bdc37a0c0a8f01eed08467884d1cfb57b9",
+  "parts": {
+    "front": {
+      "triangles": 8636,
+      "bounds_mm": [
+        [
+          -32.0,
+          32.0
+        ],
+        [
+          -17.0,
+          17.0
+        ],
+        [
+          0.0,
+          7.4
+        ]
+      ],
+      "size_mm": [
+        64.0,
+        34.0,
+        7.4
+      ],
+      "volume_mm3": 3687.39,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "connected_components": 1,
+      "sha256": "923ec7c2b81216441268a633e5ec572b75b222fcc333066264426b0b18a78882"
+    },
+    "rear-pico2": {
+      "triangles": 8900,
+      "bounds_mm": [
+        [
+          -32.0,
+          32.0
+        ],
+        [
+          -17.0,
+          17.0
+        ],
+        [
+          0.0,
+          20.05
+        ]
+      ],
+      "size_mm": [
+        64.0,
+        34.0,
+        20.05
+      ],
+      "volume_mm3": 9010.18,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "connected_components": 1,
+      "sha256": "af5247cd7f096d6ba589955534dea5b813de152c87dc3d49b2b264a84f0d08ea"
+    },
+    "rear-marble": {
+      "triangles": 9856,
+      "bounds_mm": [
+        [
+          -32.0,
+          32.0
+        ],
+        [
+          -17.0,
+          17.0
+        ],
+        [
+          0.0,
+          20.05
+        ]
+      ],
+      "size_mm": [
+        64.0,
+        34.0,
+        20.05
+      ],
+      "volume_mm3": 8772.08,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "connected_components": 1,
+      "sha256": "18b1fc6ad1230f7b83e4bd9cbd62d69162d64b27d58679617af10664bd86ffa0"
+    },
+    "button-retainer": {
+      "triangles": 2132,
+      "bounds_mm": [
+        [
+          -5.29999,
+          5.29999
+        ],
+        [
+          -13.09999,
+          13.09999
+        ],
+        [
+          -0.0,
+          1.0
+        ]
+      ],
+      "size_mm": [
+        10.6,
+        26.2,
+        1.0
+      ],
+      "volume_mm3": 164.67,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "connected_components": 1,
+      "sha256": "42a57e57370e9bd4c846c8a16d5e263139c3cfa1c6b18c22bd2659a876f85b43"
+    },
+    "button-A": {
+      "triangles": 924,
+      "bounds_mm": [
+        [
+          -5.19998,
+          5.19998
+        ],
+        [
+          -2.63998,
+          2.63998
+        ],
+        [
+          0.0,
+          3.8
+        ]
+      ],
+      "size_mm": [
+        10.4,
+        5.28,
+        3.8
+      ],
+      "volume_mm3": 133.77,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "connected_components": 1,
+      "sha256": "424be3c69101408529dcab37e6b7d972401d526cc08d659d9ff08c41a327051a"
+    },
+    "button-B": {
+      "triangles": 2188,
+      "bounds_mm": [
+        [
+          -5.19998,
+          5.19998
+        ],
+        [
+          -2.63998,
+          2.63998
+        ],
+        [
+          0.0,
+          3.8
+        ]
+      ],
+      "size_mm": [
+        10.4,
+        5.28,
+        3.8
+      ],
+      "volume_mm3": 132.78,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "connected_components": 1,
+      "sha256": "2c48cb6fec04899761bece9635e52d13319258fff0a6f43c688705556da954ab"
+    },
+    "button-X": {
+      "triangles": 884,
+      "bounds_mm": [
+        [
+          -5.19998,
+          5.19998
+        ],
+        [
+          -2.63998,
+          2.63998
+        ],
+        [
+          0.0,
+          3.8
+        ]
+      ],
+      "size_mm": [
+        10.4,
+        5.28,
+        3.8
+      ],
+      "volume_mm3": 133.63,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "connected_components": 1,
+      "sha256": "2f35719d971236881ddf50f71747a5e754fcfa599a5c0608d8be4b0851e66c78"
+    },
+    "button-Y": {
+      "triangles": 876,
+      "bounds_mm": [
+        [
+          -5.19998,
+          5.19998
+        ],
+        [
+          -2.63998,
+          2.63998
+        ],
+        [
+          0.0,
+          3.8
+        ]
+      ],
+      "size_mm": [
+        10.4,
+        5.28,
+        3.8
+      ],
+      "volume_mm3": 133.62,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "connected_components": 1,
+      "sha256": "9236ee840109c31d92cbb189693b3879250c41ad53e4147b0c4033688554ccc2"
+    },
+    "joystick-2.10": {
+      "triangles": 2524,
+      "bounds_mm": [
+        [
+          -6.0,
+          6.0
+        ],
+        [
+          -6.0,
+          6.0
+        ],
+        [
+          0.0,
+          5.0
+        ]
+      ],
+      "size_mm": [
+        12.0,
+        12.0,
+        5.0
+      ],
+      "volume_mm3": 254.44,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "connected_components": 1,
+      "sha256": "0959594aa5eb68227484f27a7c86d65222924925ab00b320778c32a8b0a90e10"
+    },
+    "fit-coupon": {
+      "triangles": 3784,
+      "bounds_mm": [
+        [
+          -28.29999,
+          45.0
+        ],
+        [
+          -15.54999,
+          15.54999
+        ],
+        [
+          0.0,
+          2.2
+        ]
+      ],
+      "size_mm": [
+        73.3,
+        31.1,
+        2.2
+      ],
+      "volume_mm3": 1669.93,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "connected_components": 1,
+      "sha256": "174d449a0ba43c509f8a626ad4d6205b7c368519ac1c8a7f44075fefaeab0b94"
+    }
+  },
+  "nominal_collision_checks": {
+    "check-shells": "PASS: zero volumetric overlap at nominal dimensions",
+    "check-caps": "PASS: zero volumetric overlap at nominal dimensions",
+    "check-lcd": "PASS: zero volumetric overlap at nominal dimensions",
+    "check-retainer": "PASS: zero volumetric overlap at nominal dimensions",
+    "check-hardware": "PASS: zero volumetric overlap at nominal dimensions",
+    "check-fastener-ports": "PASS: zero volumetric overlap at nominal dimensions"
+  },
+  "print_plates": {
+    "pico2": {
+      "objects": 9,
+      "units": "millimeter",
+      "profile": "geometry only; choose your printer and supports in the slicer"
+    },
+    "marble": {
+      "objects": 9,
+      "units": "millimeter",
+      "profile": "geometry only; choose your printer and supports in the slicer"
+    }
+  }
+}

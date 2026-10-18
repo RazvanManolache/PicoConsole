@@ -11,6 +11,11 @@ The current **0.6 pack bundles 366 native games** into the Pico's internal flash
 Squeezing them into 4 MB has become a game of its own. Adults may occasionally
 borrow the console for extremely important quality assurance.
 
+There is also an original [Pebble Mini printable case](hardware/enclosure/README.md):
+a 64 × 34 × 22.8 mm body, labeled button caps, a thumb dish, and interchangeable Pico 2 /
+GroundStudio Marble Pico backs. It is a fit-check prototype; Marble firmware
+and SD wiring still need separate work.
+
 ## A little peek
 
 Five roomy menu rows, bright outlined names, and game previews in the background.
@@ -38,8 +43,62 @@ not photographs of the LCD. [Screenshot sources and credits](docs/images/screens
 
 The current setup uses internal flash for every game and for Favorites/Recent.
 It needs no ROMs or microSD card. Audio is disabled. A battery/power circuit and
-an enclosure are still future additions on the road to a proper little handheld.
+the first physical shell fit test are still on the family workbench.
 For GPIO details, see [the hardware notes](docs/HARDWARE.md).
+
+## A little shell for the little console
+
+**Pebble Mini v0.2** is our original printable case: **64 × 34 × 22.8 mm**,
+with rounded corners, a shallow joystick thumb dish, and captive **A/B/X/Y**
+button caps. Play, list, star, and home symbols help explain their menu jobs.
+The joystick cap brings the overall depth to **27.5 mm**. Tiny pockets approve.
+
+![Pebble Mini shell assembled from the printable geometry](hardware/enclosure/preview/assembled.png)
+
+![Top view with joystick and engraved A/B/X/Y controls](hardware/enclosure/preview/controls.png)
+
+### How tiny is tiny?
+
+![Pebble Mini beside a bank card, a 1 euro coin and an AA battery, followed by a dimensioned side view](hardware/enclosure/preview/size-and-depth.png)
+
+A bank card for the footprint, an AA battery for the thickness, and a €1 coin
+for good measure. These are dimensioned models at a shared scale within each
+view, with the actual shell meshes. The AA is a size reference; this console
+still runs from USB. [Reference dimensions and sources](hardware/enclosure/preview/SCALE_REFERENCES.md).
+
+These exterior renders show the supplied print meshes, and the screen uses an
+actual launcher capture. White
+lettering represents paint in the engraving; the printable caps are single
+material. [Screen image sources and credits](docs/images/screenshots/README.md).
+
+| What you need | Files |
+|---|---|
+| Pico 2 print plate | [pebble-pico2.3mf](hardware/enclosure/print/pebble-pico2.3mf) |
+| GroundStudio Marble Pico print plate | [pebble-marble.3mf](hardware/enclosure/print/pebble-marble.3mf) — mechanical provision only; see compatibility below |
+| Individual parts | [Ten STL files](hardware/enclosure/print): shared front, two alternative backs, four button caps, retainer, joystick cap, and fit coupon |
+| Editable case | [OpenSCAD source](hardware/enclosure/picoconsole_pebble.scad) and [dimension notes](hardware/enclosure/dimensions.json) |
+| Editable render scene | [Blender assembly](hardware/enclosure/preview/pebble-assembly.blend), with its screen image packed inside |
+| Printing, assembly, rebuilding, and licenses | [Full enclosure guide](hardware/enclosure/README.md) |
+
+**This is an unprinted fit-check prototype.** Start with the
+[fit coupon](hardware/enclosure/print/fit-coupon.stl), then check one button cap,
+the joystick socket, and your actual header stack before printing everything.
+The supplied geometry assumes an **11 mm header gap**. Both 3MF plates contain
+nine separate parts in millimeters, without printer or material settings.
+Assembly uses four **M2 × 20 mm** screws; verify engagement before tightening.
+Mesh and nominal clearance checks pass; a real fit test is still needed.
+
+The Marble back has USB-C and microSD access, but **the released UF2 supports
+Pico 2 / RP2350 only**. Marble uses RP2040 and needs a smaller or reworked pack.
+Its SD wiring also conflicts with four LCD controls and needs rerouting plus
+firmware changes. The opening makes room for a card; it does not make SD work.
+
+![Previous and Mini shells at the same scale](hardware/enclosure/preview/size-comparison.png)
+
+The Mini has a **46% smaller footprint** than our first shell, with the same
+electronics and display. Less shell, more pocket. The original case geometry
+and scripts are [GPL-3.0-or-later](hardware/enclosure/LICENSE); screen artwork
+retains its component credits and licenses.
 
 ## Standing on some excellent tiny shoulders
 
@@ -111,11 +170,15 @@ The build command itself does not flash the board.
 The 0.6 firmware builds successfully, and its packaged source rebuilds to the
 same UF2. Desktop checks cover the launcher, preview decoding, Favorites/Recent,
 and simulated interrupted saves, plus input/rendering for the 48 games added in
-0.4. An earlier menu and joystick were checked on the actual device.
+0.4. The exact 0.6 image was installed on a Pico 2 on **12 October 2026**:
+all **366 games passed basic launch/return checks**, 29 selected gameplay checks
+ran through USB, and menu navigation, Favorites/Recent, and flash writes passed
+USB checks. The owner confirmed that the five-row menu is readable on the LCD
+and the physical joystick works. Save persistence across a power cycle still
+needs a hardware check.
 
-**The exact 0.6 image is still awaiting testing on the Pico.** Full playthroughs
-of every game are still pending; some retain tiny lettering in their original
-artwork, and busy games may slow down. High scores are not saved. Children are
+Full playthroughs of every game are still pending; some retain tiny lettering
+in their original artwork, and busy games may slow down. High scores are not saved. Children are
 welcome to submit bug reports in the traditional format: "It did a weird thing."
 
 [Pack details, flash/RAM usage, and verification](docs/NATIVE_PACK.md).

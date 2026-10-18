@@ -1,0 +1,53 @@
+{
+  "units": "mm",
+  "revision": "pebble-mini-prototype-v0.2",
+  "physical_fit_verified": false,
+  "design": {
+    "shell_mm": [64.0, 34.0, 22.8],
+    "overall_with_joystick_mm": [64.0, 34.0, 27.5],
+    "previous_shell_mm": [87.996, 46.186, 25.8],
+    "side_wall": 2.0,
+    "floor": 1.6,
+    "face_plate": 1.4,
+    "main_pcb_underside_clearance": 1.6,
+    "shell_screws": "4 x M2 x 20 mm; verify engagement",
+    "cap_retainer": "located on two 1 mm pins; captured by closed shell, no screws"
+  },
+  "manufacturer_dimensions": {
+    "waveshare_pico_lcd_1_3_pcb": [52.0, 26.5],
+    "waveshare_active_display": [23.4, 23.4],
+    "marble_rev_0_0_3_pcb": [50.86, 21.0],
+    "header_row_spacing": 17.78,
+    "header_pin_pitch": 2.54
+  },
+  "nominal_values_requiring_measurement": {
+    "lcd_pcb_thickness": 1.6,
+    "header_gap_main_component_plane_to_lcd_underside": 11.0,
+    "joystick_center_xy_from_lcd_center": [-19.3, 0.0],
+    "button_column_x_from_lcd_center": 21.9,
+    "button_pitch": 5.7,
+    "button_actuator_height_above_lcd_pcb": 2.2,
+    "joystick_square_socket": 2.1,
+    "joystick_socket_engagement": 2.0,
+    "lcd_glass_body": [29.5, 26.5, 3.6],
+    "usb_connector_and_sd_socket_heights": "nominal keepouts; measure actual board orientation and stack"
+  },
+  "designed_clearances": {
+    "cap_body_to_opening_each_side_x": 0.3,
+    "cap_body_to_opening_each_side_y": 0.25,
+    "adjacent_cap_flange_gap": 0.42,
+    "lcd_pcb_seating_gap_before_optional_soft_pad": 0.15,
+    "shell_lip_outside_radial_gap": 0.25,
+    "nominal_switch_free_gap": 0.1,
+    "nominal_cap_max_travel": 0.6,
+    "fit_coupon_lcd_each_side": 0.3,
+    "collision_check_seam_z_tolerance": 0.01
+  },
+  "electrical_compatibility": {
+    "pico2_released_firmware": "RP2350 only",
+    "marble_released_firmware": "unsupported: RP2040 port and memory reductions required",
+    "marble_sd_default_gpio": [16, 17, 18, 19],
+    "lcd_conflicting_controls_in_same_order": ["Left", "B", "Down", "X"],
+    "sd_rewiring_tested": false
+  }
+}
