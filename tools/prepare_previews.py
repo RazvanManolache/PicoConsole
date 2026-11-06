@@ -123,7 +123,7 @@ if a.capture:
   meta[g['id']]={'capture':src.relative_to(ROOT).as_posix(),'capture_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'viewport':viewport,'detail_crop':detail,'framing':'Whole playfield at original aspect ratio plus supplementary foreground close-up','group':group,'component_terms':'Same terms and notices as this curated game; see LICENSES and THIRD_PARTY_NOTICES.md','tint':tint,'png_sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
   if host:
    # Explicit Windows-compatible ordering keeps existing provenance portable.
-    source_files=sorted((p for p in (ROOT/'firmware/games'/g['id']).rglob('*') if p.is_file()), key=lambda p:p.relative_to(ROOT).as_posix().casefold())
+   source_files=sorted((p for p in (ROOT/'firmware/games'/g['id']).rglob('*') if p.is_file()), key=lambda p:p.relative_to(ROOT).as_posix().casefold())
    meta[g['id']]['game_source_sha256']=hashlib.sha256(b''.join(p.relative_to(ROOT).as_posix().encode()+b'\0'+p.read_bytes().replace(b'\r\n',b'\n') for p in source_files)).hexdigest()
  meta_path.write_text(json.dumps(meta,indent=2)+'\n')
 assert set(meta)=={g['id'] for g in games}
