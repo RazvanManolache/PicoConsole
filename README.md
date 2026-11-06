@@ -198,3 +198,14 @@ repository ZIP does not include the submodule contents.
 
 This is an independent personal project. Thanks to everyone whose tiny games,
 libraries, and patient documentation helped make the little game cupboard fit.
+## GitHub builds
+
+Open **Actions → Pico firmware and source → Run workflow** to build on GitHub.
+Pushes and pull requests also build. The `PicoConsole-firmware-and-source`
+artifact contains the UF2, matching prepared source ZIP, third-party notices,
+build/license manifests, host-test reports, menu previews and SHA-256 checksums.
+
+The workflow uses the pinned Arm GNU 14.2.Rel1 compiler and locked upstream
+revisions. It checks the games/library on the host and rebuilds the extracted
+source package offline, requiring a byte-identical UF2 before uploading.
+No device is flashed. Hardware behavior remains a separate validation step.

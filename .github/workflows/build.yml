@@ -1,0 +1,60 @@
+name: Pico firmware and source
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  firmware:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.14'
+      - name: Install pinned ARM compiler and build tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends cmake ninja-build gcc g++
+          python -m pip install --upgrade pip
+          python -m pip install -r tools/requirements.txt
+          archive=arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-eabi.tar.xz
+          curl --fail --location --retry 3 "https://developer.arm.com/-/media/Files/downloads/gnu/14.2.rel1/binrel/$archive" -o "$RUNNER_TEMP/$archive"
+          echo "62a63b981fe391a9cbad7ef51b17e49aeaa3e7b0d029b36ca1e9c3b2a9b78823  $RUNNER_TEMP/$archive" | sha256sum --check
+          tar -xf "$RUNNER_TEMP/$archive" -C "$RUNNER_TEMP"
+          echo "PICO_TOOLCHAIN_PATH=$RUNNER_TEMP/arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-eabi/bin" >> "$GITHUB_ENV"
+      - name: Build firmware from pinned dependencies
+        run: python tools/build.py
+      - name: Check games and library on host
+        run: |
+          python tools/check_tiny_host.py --collection tiny --gcc /usr/bin/gcc
+          python tools/check_tiny_host.py --collection gamebuino --gcc /usr/bin/gcc
+          python tools/check_library_host.py --gxx /usr/bin/g++
+      - name: Package matching source and verify offline rebuild
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/package_release.py
+          source_zip=$(find dist/releases -name '*-source.zip' -print -quit)
+          mkdir "$RUNNER_TEMP/prepared"
+          python -m zipfile -e "$source_zip" "$RUNNER_TEMP/prepared"
+          prepared=$(find "$RUNNER_TEMP/prepared" -mindepth 1 -maxdepth 1 -type d -print -quit)
+          python "$prepared/tools/build.py" --prepared --offline
+          python tools/package_release.py --verified-rebuild "$prepared/dist/pico_console.uf2"
+          output=$(dirname "$source_zip")
+          echo "$GITHUB_SHA" > "$output/BUILD-COMMIT.txt"
+          (cd "$output" && find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: PicoConsole-firmware-and-source
+          path: dist/releases/*/*
+          if-no-files-found: error
+          retention-days: 30
+
