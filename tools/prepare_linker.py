@@ -6,12 +6,13 @@ s=(root/'upstream/pico-sdk/src/rp2_common/pico_crt0/rp2350/memmap_default.ld').r
 s=s.replace('INCLUDE "pico_flash_region.ld"','FLASH(rx) : ORIGIN = 0x10000000, LENGTH = 4088k /* Last 8KB: library profile */')
 s=s.replace('LENGTH = 512k','LENGTH = 480k\n    MAIN_STACK(rwx) : ORIGIN = 0x20078000, LENGTH = 32k')
 games=json.loads((root/'tools/native_catalog.json').read_text())
+# GNU ARM objects end in .obj on Windows and .o on Unix. Match both.
 over='    __game_ram_start = ALIGN(.,8);\n    OVERLAY __game_ram_start : {\n'
 for g in games:
- pattern='*games/'+g['id']+'/*.obj' if g['group']!='CRISP' else '*crisp/games/'+g['folder']+'.obj'
- if g['group']=='POCKET':pattern='*pocket/*.obj'
- if g['group']=='TINYEXTRA':pattern='*tiny/games/'+g['folder']+'.obj'
- if g['group']=='GAMEBUINO':pattern='*gamebuino/*.obj'
+ pattern='*games/'+g['id']+'/*.o*' if g['group']!='CRISP' else '*crisp/games/'+g['folder']+'.o*'
+ if g['group']=='POCKET':pattern='*pocket/*.o*'
+ if g['group']=='TINYEXTRA':pattern='*tiny/games/'+g['folder']+'.o*'
+ if g['group']=='GAMEBUINO':pattern='*gamebuino/*.o*'
  over+='        .ram_'+g['id']+' { '+pattern+'(.bss .bss.* COMMON) . = ALIGN(8); }\n'
 over+='    } > RAM\n    __game_ram_end = .;\n\n'
 s=s.replace('    .tbss (NOLOAD)',over+'    .tbss (NOLOAD)')
