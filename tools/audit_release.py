@@ -18,7 +18,8 @@ for g in games:
  with Image.open(path) as im:assert im.size==(112,32) and im.mode=='1'
  assert record['capture'].startswith(('logs/final-play/','logs/expanded-smoke/','logs/native-smoke/','logs/tiny-host/','logs/gamebuino-host/','logs/preview-native/','logs/preview-extra/'))
  if 'game_source_sha256' in record:
-  source_files=sorted(p for p in (ROOT/'firmware/games'/g['id']).rglob('*') if p.is_file())
+  # Explicit Windows-compatible ordering keeps existing provenance portable.
+  source_files=sorted((p for p in (ROOT/'firmware/games'/g['id']).rglob('*') if p.is_file()), key=lambda p:p.relative_to(ROOT).as_posix().casefold())
   digest=hashlib.sha256(b''.join(p.relative_to(ROOT).as_posix().encode()+b'\0'+p.read_bytes().replace(b'\r\n',b'\n') for p in source_files)).hexdigest()
   assert digest==record['game_source_sha256'],f'Preview source changed: {g["id"]}'
  if g['id'] in ('pad_sokoban','pad_fifteen2'):
